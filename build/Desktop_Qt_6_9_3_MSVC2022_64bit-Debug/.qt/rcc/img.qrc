@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="./image/time.svg">C:/Users/siroi/siroimono/w_qt/DICOM_VTK/./image/time.svg</file>
+  </qresource>
+</RCC>
+
