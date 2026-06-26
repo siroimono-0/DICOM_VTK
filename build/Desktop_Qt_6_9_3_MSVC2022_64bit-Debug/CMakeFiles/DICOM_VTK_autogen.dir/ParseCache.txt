@@ -549,6 +549,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkPolyDataAlgorithm.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkMatrix3x3.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkTuple.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Filters/Sources/vtkLineSource.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKInteractor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKOpenGLNativeWidget.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKWin32Header.h
@@ -565,15 +566,20 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorRepresentation.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorWidget.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkWidgetRepresentation.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper3D.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActorCollection.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkCamera.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageActor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageSlice.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkInteractorObserver.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkMapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPolyDataMapper.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp3D.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPropCollection.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProperty.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindow.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindowInteractor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderer.h
@@ -603,6 +609,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/ExecutionModel/vtkCommonExecutionModelModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Math/vtkCommonMathModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Core/vtkFiltersCoreModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Sources/vtkFiltersSourcesModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/GUISupport/Qt/vtkGUISupportQtModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Core/vtkIOCoreModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Image/vtkIOImageModule.h
@@ -617,6 +624,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/CallBack_VtkCommand.h
 C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/Service_Dicom.h
  mmc:Q_OBJECT
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/assert.h
@@ -1059,7 +1067,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/Service_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/CallBack_VtkCommand.h
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Common.h
 C:/Users/siroi/siroimono/w_qt/DICOM_VTK/ViewModel/VM_Dicom.h
  mmc:Q_OBJECT
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/assert.h
@@ -1295,7 +1303,239 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/ViewModel/VM_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Common.h
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/WK_Dicom_1.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Interface/I_Dicom_Common.h
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
+ mmc:Q_OBJECT
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/assert.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_malloc.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_memcpy_s.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_memory.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_search.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_stdio_config.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstdio.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstdlib.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstring.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/errno.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/inttypes.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stddef.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stdio.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stdlib.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/string.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/sys/stat.h
+ mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/sys/types.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/algorithm
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/array
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/atomic
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/chrono
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/climits
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cmath
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/concurrencysal.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstddef
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdint
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdlib
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstring
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/fstream
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/initializer_list
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iomanip
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/ios
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iosfwd
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/istream
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iterator
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/limits
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/limits.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/list
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/map
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/memory
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/new
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/numeric
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/optional
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/ostream
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/sal.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdarg.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdbool.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdint.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/streambuf
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string_view
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/tuple
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/type_traits
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/typeinfo
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/utility
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vadefs.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/variant
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vcruntime.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vcruntime_string.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vector
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/version
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals.h
+ mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals_core.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/QObject
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/q17memory.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/q20functional.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/q20memory.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/q20type_traits.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qalgorithms.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qanystringview.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qarraydata.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qarraydataops.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qarraydatapointer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qassert.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qatomic.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qatomic_cxx11.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbasicatomic.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbindingstorage.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearray.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayalgorithms.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearraylist.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qbytearrayview.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qchar.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompare_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcomparehelpers.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcompilerdetection.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qconfig.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qconstructormacros.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontainerfwd.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontainerinfo.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qcontainertools_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qdarwinhelpers.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qdatastream.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qexceptionhandling.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qflags.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qfloat16.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qforeach.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qfunctionaltools_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qfunctionpointer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qgenericatomic.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qglobal.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qglobalstatic.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qhashfunctions.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qiodevicebase.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qiterable.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qiterator.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qlatin1stringview.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qlist.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qlogging.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qmalloc.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qmath.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qmetacontainer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qmetatype.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qminmax.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qnamespace.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qnumeric.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qobject.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qobject_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qobjectdefs.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qobjectdefs_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qoverload.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qpair.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qprocessordetection.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qrefcount.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qscopedpointer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qscopeguard.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstdlibdetection.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstring.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringalgorithms.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringbuilder.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringconverter.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringconverter_base.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringfwd.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringlist.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringliteral.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringmatcher.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringtokenizer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qstringview.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qswap.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qsysinfo.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qsystemdetection.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtaggedpointer.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtclasshelpermacros.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtconfiginclude.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtconfigmacros.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtcore-config.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtcoreexports.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtcoreglobal.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtdeprecationdefinitions.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtdeprecationmarkers.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtenvironmentvariables.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtformat_impl.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtmetamacros.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtnoop.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtpreprocessorsupport.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtresource.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qttranslation.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qttypetraits.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtversion.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtversionchecks.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtypeinfo.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qtypes.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qutf8stringview.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qversiontagging.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qxptype_traits.h
+ mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qyieldcpu.h
+ mdp:C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkABI.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkAbstractArray.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkArrayComponents.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCallbackCommand.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCommand.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCompiler.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkDataArray.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkDeprecation.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIOStream.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIdList.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIndent.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkMeta.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkNew.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkOStrStreamWrapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkOStreamWrapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkObject.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkObjectBase.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSetGet.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSmartPointer.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSmartPointerBase.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkStdString.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSystemIncludes.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkTimeStamp.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkType.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkVariant.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkVariantInlineOperators.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWeakPointerBase.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWin32Header.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWrappingHints.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkCartesianGrid.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkDataObject.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkDataSet.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkImageData.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkStructuredData.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkAlgorithm.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkImageAlgorithm.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Core/vtkResourceStream.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Image/vtkDICOMImageReader.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Image/vtkImageReader2.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtk_kwiml.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/abi.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/include/kwiml/abi.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/include/kwiml/int.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/int.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkABINamespace.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkBuild.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkCommonCoreModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkFeatures.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkOptions.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkPlatform.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkVersionQuick.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/DataModel/vtkCommonDataModelModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/ExecutionModel/vtkCommonExecutionModelModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Core/vtkIOCoreModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Image/vtkIOImageModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
 C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.h
  mmc:Q_OBJECT
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared/winapifamily.h
@@ -1685,6 +1925,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkPolyDataAlgorithm.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkMatrix3x3.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkTuple.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Filters/Sources/vtkLineSource.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKInteractor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKOpenGLNativeWidget.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKWin32Header.h
@@ -1701,15 +1942,20 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorRepresentation.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorWidget.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkWidgetRepresentation.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper3D.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActorCollection.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkCamera.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageActor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageSlice.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkInteractorObserver.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkMapper.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPolyDataMapper.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp3D.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPropCollection.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProperty.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindow.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindowInteractor.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderer.h
@@ -1739,6 +1985,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/ExecutionModel/vtkCommonExecutionModelModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Math/vtkCommonMathModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Core/vtkFiltersCoreModule.h
+ mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Sources/vtkFiltersSourcesModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/GUISupport/Qt/vtkGUISupportQtModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Core/vtkIOCoreModule.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Image/vtkIOImageModule.h
@@ -1753,7 +2000,11 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.h
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
  mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/CallBack_VtkCommand.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/Service_Dicom.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/WK_Dicom_1.h
  mmc:Q_OBJECT
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/assert.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt.h
@@ -1761,36 +2012,23 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_memcpy_s.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_memory.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_search.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_stdio_config.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstdio.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstdlib.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/corecrt_wstring.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/errno.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/inttypes.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stddef.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stdio.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/stdlib.h
  mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/string.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/sys/stat.h
- mdp:C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/ucrt/sys/types.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/algorithm
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/array
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/atomic
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/chrono
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/climits
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cmath
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/concurrencysal.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstddef
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdint
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdlib
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstring
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/fstream
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/initializer_list
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iomanip
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/ios
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iosfwd
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/istream
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iterator
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/limits
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/limits.h
@@ -1800,17 +2038,13 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/new
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/numeric
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/optional
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/ostream
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/sal.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdarg.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdbool.h
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/stdint.h
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/streambuf
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string_view
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/tuple
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/type_traits
- mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/typeinfo
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/utility
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vadefs.h
  mdp:C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/variant
@@ -1924,72 +2158,8 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
  mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qversiontagging.h
  mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.9.3/msvc2022_64/include/QtCore/qyieldcpu.h
- mdp:C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkABI.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkAbstractArray.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkArrayComponents.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCallbackCommand.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCommand.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkCompiler.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkDataArray.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkDeprecation.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIOStream.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIdList.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkIndent.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkMeta.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkNew.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkOStrStreamWrapper.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkOStreamWrapper.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkObject.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkObjectBase.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSetGet.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSmartPointer.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSmartPointerBase.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkStdString.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkSystemIncludes.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkTimeStamp.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkType.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkVariant.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkVariantInlineOperators.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWeakPointerBase.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWin32Header.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Core/vtkWrappingHints.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkCartesianGrid.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkDataObject.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkDataSet.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkImageData.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/DataModel/vtkStructuredData.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkAlgorithm.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkImageAlgorithm.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Core/vtkResourceStream.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Image/vtkDICOMImageReader.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/IO/Image/vtkImageReader2.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtk_kwiml.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/abi.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/include/kwiml/abi.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/include/kwiml/int.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Utilities/KWIML/vtkkwiml/int.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkABINamespace.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkBuild.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkCommonCoreModule.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkFeatures.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkOptions.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkPlatform.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Core/vtkVersionQuick.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/DataModel/vtkCommonDataModelModule.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/ExecutionModel/vtkCommonExecutionModelModule.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Core/vtkIOCoreModule.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Image/vtkIOImageModule.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.h
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Configure.hxx
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/Status.hxx
- mdp:C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Utilities/KWSys/vtksys/SystemTools.hxx
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Interface/I_Dicom_Common.h
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/AppContext.cpp
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/CallBack_VtkCommand.cpp
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/Service_Dicom.cpp
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Store/Store_Dicom.cpp
+ mdp:C:/Users/siroi/siroimono/w_qt/DICOM_VTK/Service/WK_Dicom_1.h
 C:/Users/siroi/siroimono/w_qt/DICOM_VTK/View/View_Dicom.cpp
  uic:./View/ui_View_Dicom.h
-C:/Users/siroi/siroimono/w_qt/DICOM_VTK/main.cpp
 C:/Users/siroi/siroimono/w_qt/DICOM_VTK/ViewModel/VM_Dicom.cpp
+C:/Users/siroi/siroimono/w_qt/DICOM_VTK/main.cpp

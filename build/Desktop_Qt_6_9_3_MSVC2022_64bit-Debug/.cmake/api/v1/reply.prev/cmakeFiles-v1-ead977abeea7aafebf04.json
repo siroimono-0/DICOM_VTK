@@ -2594,6 +2594,22 @@
 		},
 		{
 			"isExternal" : true,
+			"path" : "C:/Users/siroi/dcmtk-install/cmake/DCMTKConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/siroi/dcmtk-install/cmake/DCMTKConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/siroi/dcmtk-install/cmake/DCMTKTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/siroi/dcmtk-install/cmake/DCMTKTargets-debug.cmake"
+		},
+		{
+			"isExternal" : true,
 			"path" : "C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/lib/cmake/vtk-9.6/vtk-config-version.cmake"
 		},
 		{

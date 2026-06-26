@@ -22,6 +22,7 @@ public:
     void dicomFile_Load(const QString path, const path_Type type) override;
 
 public slots:
+    void slot_set_sp_Dicom_Reader(vtkSmartPointer<vtkDICOMImageReader> set);
 
 signals:
     void sig_dicomFile_Load_To_VM_dicom(vtkSmartPointer<vtkImageData> sp_img);
@@ -29,5 +30,6 @@ signals:
 private:
     vtkSmartPointer<vtkDICOMImageReader> sp_Dicom_Reader;
 };
+Q_DECLARE_METATYPE(vtkSmartPointer<vtkDICOMImageReader>);
 
 #endif // SERVICE_DICOM_H

@@ -5,10 +5,31 @@
 #include <QSignalBlocker>
 #include "./Common.h"
 #include <vtkCommand.h>
+#include <vtkRenderWindowInteractor.h>
 #include <vtkResliceImageViewer.h>
 
 class View_Dicom;
 
+class MouseMove_CallBack_VtkCommand : public vtkCommand
+{
+public:
+    MouseMove_CallBack_VtkCommand();
+
+    static MouseMove_CallBack_VtkCommand* New();
+    void set_p_v_Dicom(View_Dicom* set);
+    void set_viewType(const vtkResliceImageView_Type set);
+
+    void Execute(vtkObject* caller, unsigned long eventId, void* callData) override;
+
+private:
+    View_Dicom* p_v_Dicom = nullptr;
+    vtkResliceImageView_Type viewType;
+};
+
+//===================================================================
+//===================================================================
+//===================================================================
+//===================================================================
 class CallBack_VtkCommand : public vtkCommand
 {
 public:

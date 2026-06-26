@@ -1,6 +1,9 @@
 #ifndef VIEW_DICOM_H
 #define VIEW_DICOM_H
 
+#include "../CallBack_VtkCommand.h"
+#include "../ViewModel/VM_Dicom.h"
+
 #include <QDebug>
 #include <QFileDialog>
 #include <QMainWindow>
@@ -9,15 +12,17 @@
 #include <QSignalBlocker>
 #include <QTimer>
 #include <QVTKOpenGLNativeWidget.h>
-#include "../CallBack_VtkCommand.h"
-#include "../ViewModel/VM_Dicom.h"
+
 #include <vtkActor.h>
 #include <vtkCamera.h>
 #include <vtkDICOMImageReader.h>
 #include <vtkGenericOpenGLRenderWindow.h>
 #include <vtkImageActor.h>
 #include <vtkImageViewer2.h>
+#include <vtkLineSource.h>
 #include <vtkNew.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkProperty.h>
 #include <vtkRenderWindowInteractor.h>
 #include <vtkRenderer.h>
 #include <vtkResliceCursor.h>
@@ -49,10 +54,14 @@ public:
     void init_Render_Windo();
     void init_Reslice_Viewr();
     void init_UI_First();
+    void init_CrossHairLines(crossHairLines &cross,
+                             vtkRenderer *render,
+                             const crossHairLines_Type type);
 
     void set_Color_Window_Level();
-    void set_ui_slider();
-    void set_ui_slider_vtkCommand(const vtkResliceImageView_Type type);
+    void set_UI_slider();
+    void set_UI_slider_vtkCommand(const vtkResliceImageView_Type type);
+    void set_UI_YX_vtkCommand(const int pos_Y, const int pos_X, const vtkResliceImageView_Type type);
 
     void fix_ViewScale_Width(vtkResliceImageViewer *p_Reslice_Viewer,
                              QVTKOpenGLNativeWidget *p_UI_Widget,
@@ -61,6 +70,8 @@ public:
     void roll_View(vtkResliceImageViewer *p_Reslice_Viewer, const imageRoll_Type roll_Type);
 
     void flip_View(vtkResliceImageViewer *p_Reslice_Viewer, const imageFlip_Type flip_Type);
+
+    void update_CrossHairLines();
 
 public slots:
     //======================UI SLOT=====================
@@ -100,6 +111,11 @@ private:
     vtkSmartPointer<vtkResliceImageViewer> sp_Axial_Viewer = nullptr;
     vtkSmartPointer<vtkResliceImageViewer> sp_Coronal_Viewer = nullptr;
     vtkSmartPointer<vtkResliceImageViewer> sp_Sagittal_Viewer = nullptr;
+
+    crossHairLines st_Axial_Cross;
+    crossHairLines st_Coronal_Cross;
+    crossHairLines st_Sagittal_Cross;
+    int cursorIndex[3] = {0, 0, 0};
     //========================== VTK ==========================
     //========================== VTK ==========================
 
@@ -108,6 +124,10 @@ private:
     vtkSmartPointer<CallBack_VtkCommand> sp_Axial_Viewer_Command = nullptr;
     vtkSmartPointer<CallBack_VtkCommand> sp_Coronal_Viewer_Command = nullptr;
     vtkSmartPointer<CallBack_VtkCommand> sp_Sagittal_Viewer_Command = nullptr;
+
+    vtkSmartPointer<MouseMove_CallBack_VtkCommand> sp_MouseEvent_AxialViewer_Command = nullptr;
+    vtkSmartPointer<MouseMove_CallBack_VtkCommand> sp_MouseEvent_CoronalViewer_Command = nullptr;
+    vtkSmartPointer<MouseMove_CallBack_VtkCommand> sp_MouseEvent_SagittalViewer_Command = nullptr;
     //======================== Observer ========================
     //======================== Observer ========================
 };

@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -56,6 +57,7 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QPushButton *axial_Flip_Btn_Horizontal;
     QPushButton *axial_Flip_Btn_Vertical;
+    QLabel *axial_XY_Label;
     QSlider *verticalSlider;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -69,6 +71,7 @@ public:
     QHBoxLayout *horizontalLayout_10;
     QPushButton *sagittal_Flip_Btn_Horizontal;
     QPushButton *sagittal_Flip_Btn_Vertical;
+    QLabel *sagittal_XY_Label;
     QSlider *verticalSlider_2;
     QHBoxLayout *horizontalLayout_3;
     QVTKOpenGLNativeWidget *QVTK_coronalWidget;
@@ -81,6 +84,7 @@ public:
     QHBoxLayout *horizontalLayout_12;
     QPushButton *coronal_Flip_Btn_Horizontal;
     QPushButton *coronal_Flip_Btn_Vertical;
+    QLabel *coronal_XY_Label;
     QSlider *verticalSlider_3;
     QTabWidget *tabWidget;
     QWidget *tab;
@@ -203,6 +207,12 @@ public:
 
         verticalLayout_7->addLayout(verticalLayout_Btn1);
 
+        axial_XY_Label = new QLabel(QVTK_axialWidget);
+        axial_XY_Label->setObjectName("axial_XY_Label");
+        axial_XY_Label->setGeometry(QRect(260, 880, 300, 30));
+        QFont font;
+        font.setPointSize(15);
+        axial_XY_Label->setFont(font);
 
         horizontalLayout->addWidget(QVTK_axialWidget);
 
@@ -273,6 +283,10 @@ public:
 
         verticalLayout_4->addLayout(verticalLayout_3);
 
+        sagittal_XY_Label = new QLabel(QVTK_sagittalWidget);
+        sagittal_XY_Label->setObjectName("sagittal_XY_Label");
+        sagittal_XY_Label->setGeometry(QRect(270, 390, 300, 30));
+        sagittal_XY_Label->setFont(font);
 
         horizontalLayout_2->addWidget(QVTK_sagittalWidget);
 
@@ -337,6 +351,10 @@ public:
 
         horizontalLayout_7->addLayout(verticalLayout_5);
 
+        coronal_XY_Label = new QLabel(QVTK_coronalWidget);
+        coronal_XY_Label->setObjectName("coronal_XY_Label");
+        coronal_XY_Label->setGeometry(QRect(270, 390, 300, 30));
+        coronal_XY_Label->setFont(font);
 
         horizontalLayout_3->addWidget(QVTK_coronalWidget);
 
@@ -412,14 +430,17 @@ public:
         axial_Roll_Btn_Right->setText(QCoreApplication::translate("View_Dicom", "\342\226\266", nullptr));
         axial_Flip_Btn_Horizontal->setText(QCoreApplication::translate("View_Dicom", "\342\227\200\342\226\266", nullptr));
         axial_Flip_Btn_Vertical->setText(QCoreApplication::translate("View_Dicom", "\342\226\262\342\226\274", nullptr));
+        axial_XY_Label->setText(QString());
         sagittal_Roll_Btn_Left->setText(QCoreApplication::translate("View_Dicom", "\342\227\200", nullptr));
         sagittal_Roll_Btn_Right->setText(QCoreApplication::translate("View_Dicom", "\342\226\266", nullptr));
         sagittal_Flip_Btn_Horizontal->setText(QCoreApplication::translate("View_Dicom", "\342\227\200\342\226\266", nullptr));
         sagittal_Flip_Btn_Vertical->setText(QCoreApplication::translate("View_Dicom", "\342\226\262\342\226\274", nullptr));
+        sagittal_XY_Label->setText(QString());
         coronal_Roll_Btn_Left->setText(QCoreApplication::translate("View_Dicom", "\342\227\200", nullptr));
         coronal_Roll_Btn_Right->setText(QCoreApplication::translate("View_Dicom", "\342\226\266", nullptr));
         coronal_Flip_Btn_Horizontal->setText(QCoreApplication::translate("View_Dicom", "\342\227\200\342\226\266", nullptr));
         coronal_Flip_Btn_Vertical->setText(QCoreApplication::translate("View_Dicom", "\342\226\262\342\226\274", nullptr));
+        coronal_XY_Label->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("View_Dicom", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("View_Dicom", "Tab 2", nullptr));
         menuFile->setTitle(QCoreApplication::translate("View_Dicom", "File", nullptr));

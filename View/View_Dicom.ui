@@ -199,6 +199,24 @@
             </item>
            </layout>
           </widget>
+          <widget class="QLabel" name="axial_XY_Label">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>880</y>
+             <width>300</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>15</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>
@@ -331,6 +349,24 @@
               </item>
              </layout>
             </widget>
+            <widget class="QLabel" name="sagittal_XY_Label">
+             <property name="geometry">
+              <rect>
+               <x>270</x>
+               <y>390</y>
+               <width>300</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>15</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
            </widget>
           </item>
           <item>
@@ -436,6 +472,24 @@
                </layout>
               </item>
              </layout>
+            </widget>
+            <widget class="QLabel" name="coronal_XY_Label">
+             <property name="geometry">
+              <rect>
+               <x>270</x>
+               <y>390</y>
+               <width>300</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>15</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
             </widget>
            </widget>
           </item>

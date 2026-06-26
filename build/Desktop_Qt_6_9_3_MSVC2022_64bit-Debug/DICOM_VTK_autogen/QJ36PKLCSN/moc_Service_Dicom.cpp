@@ -42,13 +42,20 @@ template <> constexpr inline auto Service_Dicom::qt_create_metaobjectdata<qt_met
         "sig_dicomFile_Load_To_VM_dicom",
         "",
         "vtkSmartPointer<vtkImageData>",
-        "sp_img"
+        "sp_img",
+        "slot_set_sp_Dicom_Reader",
+        "vtkSmartPointer<vtkDICOMImageReader>",
+        "set"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'sig_dicomFile_Load_To_VM_dicom'
         QtMocHelpers::SignalData<void(vtkSmartPointer<vtkImageData>)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
+        }}),
+        // Slot 'slot_set_sp_Dicom_Reader'
+        QtMocHelpers::SlotData<void(vtkSmartPointer<vtkDICOMImageReader>)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 6, 7 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -74,7 +81,20 @@ void Service_Dicom::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->sig_dicomFile_Load_To_VM_dicom((*reinterpret_cast< std::add_pointer_t<vtkSmartPointer<vtkImageData>>>(_a[1]))); break;
+        case 1: _t->slot_set_sp_Dicom_Reader((*reinterpret_cast< std::add_pointer_t<vtkSmartPointer<vtkDICOMImageReader>>>(_a[1]))); break;
         default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 1:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< vtkSmartPointer<vtkDICOMImageReader> >(); break;
+            }
+            break;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
@@ -104,14 +124,14 @@ int Service_Dicom::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
     }
     return _id;
 }

@@ -8,8 +8,13 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets OpenGLWidgets)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Concurrent)
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 set(VTK_DIR "C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/lib/cmake/vtk-9.6")
+
+set(DCMTK_DIR "C:/Users/siroi/dcmtk-install/cmake")
+
+find_package(DCMTK CONFIG REQUIRED)
 
 find_package(VTK REQUIRED COMPONENTS
     CommonCore
@@ -42,6 +47,7 @@ qt_add_executable(DICOM_VTK
     Store/Store_Dicom.cpp
     Common.h
     CallBack_VtkCommand.h CallBack_VtkCommand.cpp
+    Service/WK_Dicom_1.h Service/WK_Dicom_1.cpp
 )
 
 qt_add_resources(
@@ -62,9 +68,18 @@ target_link_libraries(DICOM_VTK PRIVATE Qt6::Core)
 target_link_libraries(DICOM_VTK PRIVATE Qt6::Concurrent)
 target_link_libraries(DICOM_VTK PRIVATE Qt6::Core)
 
-vtk_module_autoinit(
-    TARGETS DICOM_VTK
-    MODULES ${VTK_LIBRARIES}
+target_include_directories(${PROJECT_NAME} PRIVATE
+    "C:/Users/siroi/dcmtk-install/include"
+)
+
+target_link_directories(${PROJECT_NAME} PRIVATE
+    "C:/Users/siroi/dcmtk-install/lib"
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    dcmdata
+    oflog
+    ofstd
 )
 
 include(GNUInstallDirs)

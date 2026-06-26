@@ -22,6 +22,122 @@ View_Dicom::~View_Dicom()
     delete ui;
 }
 
+void View_Dicom::set_UI_YX_vtkCommand(const int pos_Y,
+                                      const int pos_X,
+                                      const vtkResliceImageView_Type type)
+{
+    if (type == vtkResliceImageView_Type::AXIAL)
+    {
+        QString s = QString("X : %1mm   Y : %2mm").arg(pos_X).arg(pos_Y);
+        this->ui->axial_XY_Label->setText(s);
+    }
+    else if (type == vtkResliceImageView_Type::SAGITTAL)
+    {
+        QString s = QString("X : %1mm   Y : %2mm").arg(pos_X).arg(pos_Y);
+        this->ui->sagittal_XY_Label->setText(s);
+    }
+    else if (type == vtkResliceImageView_Type::CORONAL)
+    {
+        QString s = QString("X : %1mm   Y : %2mm").arg(pos_X).arg(pos_Y);
+        this->ui->coronal_XY_Label->setText(s);
+    }
+    return;
+}
+
+void View_Dicom::update_CrossHairLines()
+{
+    auto image = this->p_vm_Dicom->get_store_image();
+
+    if (image == nullptr)
+    {
+        return;
+    }
+
+    double bound[6];
+    double origin[3];
+    double spacing[3];
+
+    image->GetBounds(bound);
+    image->GetOrigin(origin);
+    image->GetSpacing(spacing);
+
+    double x = origin[0] + this->cursorIndex[0] * spacing[0];
+    double y = origin[1] + this->cursorIndex[1] * spacing[1];
+    double z = origin[2] + this->cursorIndex[2] * spacing[2];
+
+    // Axial XY plane, z고정 ?
+    this->st_Axial_Cross.line_1->SetPoint1(bound[0], y, z);
+    this->st_Axial_Cross.line_1->SetPoint2(bound[1], y, z);
+
+    this->st_Axial_Cross.line_2->SetPoint1(x, bound[2], z);
+    this->st_Axial_Cross.line_2->SetPoint2(x, bound[3], z);
+
+    // Sagittal YZ. x
+    this->st_Sagittal_Cross.line_1->SetPoint1(x, bound[2], z);
+    this->st_Sagittal_Cross.line_1->SetPoint2(x, bound[3], z);
+
+    this->st_Sagittal_Cross.line_2->SetPoint1(x, y, bound[4]);
+    this->st_Sagittal_Cross.line_2->SetPoint2(x, y, bound[5]);
+
+    // Sagittal XZ. y
+    this->st_Coronal_Cross.line_1->SetPoint1(bound[0], y, z);
+    this->st_Coronal_Cross.line_1->SetPoint2(bound[1], y, z);
+
+    this->st_Coronal_Cross.line_2->SetPoint1(x, y, bound[4]);
+    this->st_Coronal_Cross.line_2->SetPoint2(x, y, bound[5]);
+
+    this->st_Axial_Cross.line_1->Modified();
+    this->st_Axial_Cross.line_2->Modified();
+    this->st_Coronal_Cross.line_1->Modified();
+    this->st_Coronal_Cross.line_2->Modified();
+    this->st_Sagittal_Cross.line_1->Modified();
+    this->st_Sagittal_Cross.line_2->Modified();
+    return;
+}
+
+void View_Dicom::init_CrossHairLines(crossHairLines &cross,
+                                     vtkRenderer *render,
+                                     const crossHairLines_Type type)
+{
+    cross.line_1 = vtkSmartPointer<vtkLineSource>::New();
+    cross.line_2 = vtkSmartPointer<vtkLineSource>::New();
+
+    cross.mapper_1 = vtkSmartPointer<vtkPolyDataMapper>::New();
+    cross.mapper_2 = vtkSmartPointer<vtkPolyDataMapper>::New();
+
+    cross.mapper_1->SetInputConnection(cross.line_1->GetOutputPort());
+    cross.mapper_2->SetInputConnection(cross.line_2->GetOutputPort());
+
+    cross.actor_1 = vtkSmartPointer<vtkActor>::New();
+    cross.actor_2 = vtkSmartPointer<vtkActor>::New();
+
+    cross.actor_1->SetMapper(cross.mapper_1);
+    cross.actor_2->SetMapper(cross.mapper_2);
+
+    if (type == crossHairLines_Type::AXIAL)
+    {
+        cross.actor_1->GetProperty()->SetColor(1.0, 0.0, 0.0); // red
+        cross.actor_2->GetProperty()->SetColor(0.0, 1.0, 0.0); // green
+    }
+    else if (type == crossHairLines_Type::CORONAL)
+    {
+        cross.actor_1->GetProperty()->SetColor(0.0, 0.0, 1.0); // blue
+        cross.actor_2->GetProperty()->SetColor(0.0, 1.0, 0.0); // green
+    }
+    else if (type == crossHairLines_Type::SAGITTAL)
+    {
+        cross.actor_1->GetProperty()->SetColor(0.0, 0.0, 1.0); // blue
+        cross.actor_2->GetProperty()->SetColor(1.0, 0.0, 0.0); // red
+    }
+
+    cross.actor_1->GetProperty()->SetLineWidth(1.0);
+    cross.actor_2->GetProperty()->SetLineWidth(1.0);
+
+    render->AddActor(cross.actor_1);
+    render->AddActor(cross.actor_2);
+    return;
+}
+
 void View_Dicom::flip_View(vtkResliceImageViewer *p_Reslice_Viewer, const imageFlip_Type flip_Type)
 {
     if (p_Reslice_Viewer == nullptr)
@@ -261,6 +377,7 @@ void View_Dicom::fix_ViewScale_Width(vtkResliceImageViewer *p_Reslice_Viewer,
     camera->SetParallelScale(scale);
 
     renderer->ResetCameraClippingRange();
+
     p_Reslice_Viewer->Render();
 
     return;
@@ -284,6 +401,8 @@ void View_Dicom::resizeEvent(QResizeEvent *event)
 
 void View_Dicom::slot_MainWindow_Resize()
 {
+    //===================== 버튼 위젯 배치 =====================
+    //===================== 버튼 위젯 배치 =====================
     int margin_Widget = 1;
     int x_axialBtn_Widget = this->ui->QVTK_axialWidget->width() - this->ui->axialBtn_Widget->width()
                             - margin_Widget;
@@ -302,6 +421,24 @@ void View_Dicom::slot_MainWindow_Resize()
     int y_coronalBtn_Widget = margin_Widget;
 
     this->ui->coronalBtn_Widget->move(x_coronalBtn_Widget, y_coronalBtn_Widget);
+    //===================== 버튼 위젯 배치 =====================
+    //===================== 버튼 위젯 배치 =====================
+
+    //===================== XY 라벨 배치 =====================
+    //===================== XY 라벨 배치 =====================
+    int x_axial_XY_Label = this->ui->QVTK_axialWidget->width() - 230;
+    int y_axial_XY_Label = this->ui->QVTK_axialWidget->height() - 100;
+    this->ui->axial_XY_Label->move(x_axial_XY_Label, y_axial_XY_Label);
+
+    int x_sagittal_XY_Label = this->ui->QVTK_sagittalWidget->width() - 230;
+    int y_sagittal_XY_Label = this->ui->QVTK_sagittalWidget->height() - 50;
+    this->ui->sagittal_XY_Label->move(x_sagittal_XY_Label, y_sagittal_XY_Label);
+
+    int x_coronal_XY_Label = this->ui->QVTK_coronalWidget->width() - 230;
+    int y_coronal_XY_Label = this->ui->QVTK_coronalWidget->height() - 50;
+    this->ui->coronal_XY_Label->move(x_coronal_XY_Label, y_coronal_XY_Label);
+    //===================== XY 라벨 배치 =====================
+    //===================== XY 라벨 배치 =====================
 
     return;
 }
@@ -321,25 +458,58 @@ void View_Dicom::init_UI_First()
     return;
 }
 
-void View_Dicom::set_ui_slider_vtkCommand(const vtkResliceImageView_Type type)
+void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
 {
     if (type == vtkResliceImageView_Type::AXIAL)
     {
         QSignalBlocker blocker(this->ui->verticalSlider);
         int cur = this->sp_Axial_Viewer->GetSlice();
         this->ui->verticalSlider->setSliderPosition(cur);
+
+        this->cursorIndex[2] = cur;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
+        this->sp_Axial_Viewer->Render();
+        this->sp_Sagittal_Viewer->Render();
+        this->sp_Coronal_Viewer->Render();
     }
     else if (type == vtkResliceImageView_Type::SAGITTAL)
     {
         QSignalBlocker blocker(this->ui->verticalSlider_2);
         int cur = this->sp_Sagittal_Viewer->GetSlice();
         this->ui->verticalSlider_2->setSliderPosition(cur);
+
+        this->cursorIndex[0] = cur;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
+        this->sp_Axial_Viewer->Render();
+        this->sp_Sagittal_Viewer->Render();
+        this->sp_Coronal_Viewer->Render();
     }
     else if (type == vtkResliceImageView_Type::CORONAL)
     {
         QSignalBlocker blocker(this->ui->verticalSlider_3);
         int cur = this->sp_Coronal_Viewer->GetSlice();
         this->ui->verticalSlider_3->setSliderPosition(cur);
+
+        this->cursorIndex[1] = cur;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
+        this->sp_Axial_Viewer->Render();
+        this->sp_Sagittal_Viewer->Render();
+        this->sp_Coronal_Viewer->Render();
     }
 
     return;
@@ -375,21 +545,39 @@ void View_Dicom::init_connection()
             &View_Dicom::slot_Action_DirectoryOpen_Clicked);
 
     connect(this->ui->verticalSlider, &QSlider::valueChanged, this, [this](int val) {
-        this->sp_Axial_Viewer->SetSlice(val);
+        this->cursorIndex[2] = val;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
         this->sp_Axial_Viewer->Render();
         this->sp_Sagittal_Viewer->Render();
         this->sp_Coronal_Viewer->Render();
     });
 
     connect(this->ui->verticalSlider_2, &QSlider::valueChanged, this, [this](int val) {
-        this->sp_Sagittal_Viewer->SetSlice(val);
+        this->cursorIndex[0] = val;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
         this->sp_Axial_Viewer->Render();
         this->sp_Sagittal_Viewer->Render();
         this->sp_Coronal_Viewer->Render();
     });
 
     connect(this->ui->verticalSlider_3, &QSlider::valueChanged, this, [this](int val) {
-        this->sp_Coronal_Viewer->SetSlice(val);
+        this->cursorIndex[1] = val;
+        this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
+        this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
+        this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
+
+        this->update_CrossHairLines();
+
         this->sp_Axial_Viewer->Render();
         this->sp_Sagittal_Viewer->Render();
         this->sp_Coronal_Viewer->Render();
@@ -523,9 +711,13 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
                                    + this->sp_Sagittal_Viewer->GetSliceMax())
                                   / 2;
 
-    this->sp_Axial_Viewer->SetSlice(axial_slice_avgRange);
-    this->sp_Coronal_Viewer->SetSlice(coronal_slice_avgRange);
-    this->sp_Sagittal_Viewer->SetSlice(sagittal_slice_avgRange);
+    this->cursorIndex[2] = axial_slice_avgRange;
+    this->cursorIndex[1] = coronal_slice_avgRange;
+    this->cursorIndex[0] = sagittal_slice_avgRange;
+
+    this->sp_Axial_Viewer->SetSlice(this->cursorIndex[2]);
+    this->sp_Coronal_Viewer->SetSlice(this->cursorIndex[1]);
+    this->sp_Sagittal_Viewer->SetSlice(this->cursorIndex[0]);
 
     // 밝기 / 대비 설정
     this->set_Color_Window_Level();
@@ -554,7 +746,14 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
                               this->ui->QVTK_sagittalWidget,
                               vtkResliceImageView_Type::SAGITTAL);
 
-    this->set_ui_slider();
+    this->set_UI_slider();
+
+    this->update_CrossHairLines();
+
+    this->sp_Axial_Viewer->Render();
+    this->sp_Coronal_Viewer->Render();
+    this->sp_Sagittal_Viewer->Render();
+
     qDebug() << "Axial slice range:" << this->sp_Axial_Viewer->GetSliceMin()
              << this->sp_Axial_Viewer->GetSliceMax();
 
@@ -567,7 +766,7 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
     return;
 }
 
-void View_Dicom::set_ui_slider()
+void View_Dicom::set_UI_slider()
 {
     // ===================== UI Slider =====================
     QSignalBlocker blk_1(this->ui->verticalSlider);
@@ -628,6 +827,17 @@ void View_Dicom::init_Reslice_Viewr()
     this->sp_Coronal_Viewer->SetSliceOrientationToXZ();
     this->sp_Sagittal_Viewer->SetSliceOrientationToYZ();
 
+    // 십자선 초기화
+    this->init_CrossHairLines(this->st_Axial_Cross,
+                              this->sp_Axial_Viewer->GetRenderer(),
+                              crossHairLines_Type::AXIAL);
+    this->init_CrossHairLines(this->st_Coronal_Cross,
+                              this->sp_Coronal_Viewer->GetRenderer(),
+                              crossHairLines_Type::CORONAL);
+    this->init_CrossHairLines(this->st_Sagittal_Cross,
+                              this->sp_Sagittal_Viewer->GetRenderer(),
+                              crossHairLines_Type::SAGITTAL);
+
     // ===================== 슬라이더 Observer =====================
     // ===================== 슬라이더 Observer =====================
     this->sp_Axial_Viewer_Command = vtkSmartPointer<CallBack_VtkCommand>::New();
@@ -647,6 +857,35 @@ void View_Dicom::init_Reslice_Viewr()
     this->sp_Coronal_Viewer_Command->set_viewType(vtkResliceImageView_Type::CORONAL);
     this->sp_Coronal_Viewer->AddObserver(vtkResliceImageViewer::SliceChangedEvent,
                                          this->sp_Coronal_Viewer_Command);
+    // ===================== 슬라이더 Observer =====================
+    // ===================== 슬라이더 Observer =====================
+
+    // ===================== Mouse Observer =====================
+    // ===================== Mouse Observer =====================
+    this->sp_MouseEvent_AxialViewer_Command = vtkSmartPointer<MouseMove_CallBack_VtkCommand>::New();
+    this->sp_MouseEvent_AxialViewer_Command->set_p_v_Dicom(this);
+    this->sp_MouseEvent_AxialViewer_Command->set_viewType(vtkResliceImageView_Type::AXIAL);
+    this->sp_Axial_Viewer->GetRenderWindow()
+        ->GetInteractor()
+        ->AddObserver(vtkCommand::MouseMoveEvent, this->sp_MouseEvent_AxialViewer_Command);
+
+    this->sp_MouseEvent_SagittalViewer_Command
+        = vtkSmartPointer<MouseMove_CallBack_VtkCommand>::New();
+    this->sp_MouseEvent_SagittalViewer_Command->set_p_v_Dicom(this);
+    this->sp_MouseEvent_SagittalViewer_Command->set_viewType(vtkResliceImageView_Type::SAGITTAL);
+    this->sp_Sagittal_Viewer->GetRenderWindow()
+        ->GetInteractor()
+        ->AddObserver(vtkCommand::MouseMoveEvent, this->sp_MouseEvent_SagittalViewer_Command);
+
+    this->sp_MouseEvent_CoronalViewer_Command = vtkSmartPointer<MouseMove_CallBack_VtkCommand>::New();
+    this->sp_MouseEvent_CoronalViewer_Command->set_p_v_Dicom(this);
+    this->sp_MouseEvent_CoronalViewer_Command->set_viewType(vtkResliceImageView_Type::CORONAL);
+    this->sp_Coronal_Viewer->GetRenderWindow()
+        ->GetInteractor()
+        ->AddObserver(vtkCommand::MouseMoveEvent, this->sp_MouseEvent_CoronalViewer_Command);
+
+    // ===================== Mouse Observer =====================
+    // ===================== Mouse Observer =====================
 }
 
 void View_Dicom::set_Color_Window_Level()

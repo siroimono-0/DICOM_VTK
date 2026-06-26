@@ -546,6 +546,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/build/Desktop_Qt_6_9_3_MSVC2022_64bit-De
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/ExecutionModel/vtkPolyDataAlgorithm.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkMatrix3x3.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Common/Math/vtkTuple.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Filters/Sources/vtkLineSource.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKInteractor.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKOpenGLNativeWidget.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/GUISupport/Qt/QVTKWin32Header.h \
@@ -562,15 +563,20 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/build/Desktop_Qt_6_9_3_MSVC2022_64bit-De
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorRepresentation.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkResliceCursorWidget.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Interaction/Widgets/vtkWidgetRepresentation.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkAbstractMapper3D.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActor.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkActorCollection.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkCamera.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageActor.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkImageSlice.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkInteractorObserver.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkMapper.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPolyDataMapper.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProp3D.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkPropCollection.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkProperty.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindow.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderWindowInteractor.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/Rendering/Core/vtkRenderer.h \
@@ -600,6 +606,7 @@ C:/Users/siroi/siroimono/w_qt/DICOM_VTK/build/Desktop_Qt_6_9_3_MSVC2022_64bit-De
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/ExecutionModel/vtkCommonExecutionModelModule.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Common/Math/vtkCommonMathModule.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Core/vtkFiltersCoreModule.h \
+  C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/Filters/Sources/vtkFiltersSourcesModule.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/GUISupport/Qt/vtkGUISupportQtModule.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Core/vtkIOCoreModule.h \
   C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/IO/Image/vtkIOImageModule.h \
