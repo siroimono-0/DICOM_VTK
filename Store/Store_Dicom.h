@@ -21,6 +21,7 @@ public:
     //=======================GET=======================
     vtkSmartPointer<vtkImageData> get_sp_image();
     dicomMetaDataMap get_mp_DicomMetaData();
+    QString get_seriesInstanceUID();
 
     //=======================GET=======================
     //=======================GET=======================
@@ -28,7 +29,11 @@ public:
     //=======================SET=======================
     //=======================SET=======================
     void set_sp_image(vtkSmartPointer<vtkImageData> set);
+    void set_sp_image_UID(const QString UID);
     void set_mp_DicomMetaData(dicomMetaDataMap set);
+    void set_mp_Image(dicomImageDataMap set);
+    void set_seriesInstanceUID(const QString set);
+
     //=======================SET=======================
     //=======================SET=======================
 
@@ -44,6 +49,11 @@ signals:
 
 private:
     vtkSmartPointer<vtkImageData> sp_image;
+    QString seriesInstanceUID;
+
+    dicomImageDataMap mp_Image;
+    // QMap<QString,vtkSmartPointer<vtkImageData>>;
+
     dicomMetaDataMap mp_DicomMetaData;
 };
 

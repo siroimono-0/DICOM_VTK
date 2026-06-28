@@ -59,6 +59,11 @@ void Service_Dicom::dicomFile_Load(const QString path, const path_Type type)
             &WK_Dicom_1::sig_create_Mp_DicomMetaData_Finished,
             this,
             &Service_Dicom::slot_create_Mp_DicomMetaDat_From_WK);
+
+    connect(wk,
+            &WK_Dicom_1::sig_makeDicomImage_Finished,
+            this,
+            &Service_Dicom::sig_makeDicomImage_To_VM_Dicom);
     //=================== Service <> WK ===================
     //=================== Service <> WK ===================
 

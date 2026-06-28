@@ -58,6 +58,11 @@ void AppContext::init_connect_p_svc_Dicom_To_p_vm_Dicom()
             &Service_Dicom::sig_create_Mp_DicomMetaDat_To_VM_Dicom,
             this->p_vm_Dicom,
             &VM_Dicom::slot_create_Mp_DicomMetaDat_From_Svc);
+
+    connect(this->p_svc_Dicom,
+            &Service_Dicom::sig_makeDicomImage_To_VM_Dicom,
+            this->p_vm_Dicom,
+            &VM_Dicom::slot_makeDicomImage_From_Svc);
     return;
 }
 
@@ -66,7 +71,8 @@ void AppContext::init_connect_p_st_Dicom_To_p_v_Dicom()
     connect(this->p_st_Dicom,
             &Store_Dicom::sig_sp_image_change,
             this->p_v_Dicom,
-            &View_Dicom::slot_DicomFile_Reload_From_Store);
+            &View_Dicom::slot_DicomFile_Reload_From_Store,
+            Qt::DirectConnection);
 
     connect(this->p_st_Dicom,
             &Store_Dicom::sig_mp_DicomMetaData_change,

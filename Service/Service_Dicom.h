@@ -27,10 +27,12 @@ public slots:
 
     // move로 이동하기위해 중간 값 받는 다리
     void slot_create_Mp_DicomMetaDat_From_WK(dicomMetaDataMap ret);
+    // void slot_makeDicomImage_From_WK(dicomImageDataMap ret);
 
 signals:
-    void sig_dicomFile_Load_To_VM_dicom(vtkSmartPointer<vtkImageData> sp_img);
+    void sig_dicomFile_Load_To_VM_dicom(vtkSmartPointer<vtkImageData> sp_img, QString uid);
     void sig_create_Mp_DicomMetaDat_To_VM_Dicom(dicomMetaDataMap mp);
+    void sig_makeDicomImage_To_VM_Dicom(dicomImageDataMap mp);
 
 private:
     // vtkSmartPointer<vtkDICOMImageReader> sp_Dicom_Reader;

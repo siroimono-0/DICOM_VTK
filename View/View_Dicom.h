@@ -75,6 +75,10 @@ public:
 
     void update_CrossHairLines();
 
+    QTreeWidgetItem *find_TopLevleItem(const QString uid);
+    int cnv_Slice_To_Row(int slice);
+    int cnv_Row_To_Slice(int row);
+
 public slots:
     //======================UI SLOT=====================
     void slot_Action_FileOpen_Clicked();
@@ -106,9 +110,12 @@ private:
     Ui::View_Dicom *ui;
 
     VM_Dicom *p_vm_Dicom = nullptr;
+
+    QString cur_seriesInstanceUID;
     //========================== Model ==========================
     //========================== Model ==========================
     dicomMetaDataMap mp_DicomMetaData;
+    // QMap<QString, dicomMetaDataVec>;
     //========================== Model ==========================
     //========================== Model ==========================
 

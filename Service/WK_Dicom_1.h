@@ -29,13 +29,15 @@ public:
     dicomMetaData read_DicomMetaData(const QString &filePath, const QString &fileName);
     // static bool dicom_sotr(dicomMetaData d1, dicomMetaData d2);
     // void compare_DicomFile();
-    QString makeTmpDir();
+    QString makeDicomImage(const QString seriesInstanceUID);
+
 public slots:
 
 signals:
     void sig_wk_End();
-    void sig_DicomFile_Finished(vtkSmartPointer<vtkImageData> sp_img);
+    void sig_DicomFile_Finished(vtkSmartPointer<vtkImageData> sp_img, QString uid);
     void sig_create_Mp_DicomMetaData_Finished(dicomMetaDataMap mp_DicomMetaData);
+    void sig_makeDicomImage_Finished(dicomImageDataMap mp_DicomImage);
 
 private:
     // Service_Dicom* p_svc_Dicom = nullptr;
@@ -53,7 +55,8 @@ private:
 
     QString cur_seriesInstanceUID;
 
-    QTemporaryDir tmpDir;
+    dicomImageDataMap mp_DicomImage;
+    // QMap<QString, vtkSmartPointer<vtkImageData>>
 };
 
 #endif // WK_DICOM_1_H

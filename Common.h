@@ -38,7 +38,10 @@ enum treeItem_DataType {
     // Series
     Role_seriesDate,
     Role_seriesTime,
-    Role_seriesDescription
+    Role_seriesDescription,
+
+    //
+    Role_seriesInstanceUID
 };
 enum class path_Type { FILE_PATH, DIR_PATH };
 
@@ -119,5 +122,6 @@ using dicomImageDataMap = QMap<QString, vtkSmartPointer<vtkImageData>>;
 Q_DECLARE_METATYPE(vtkSmartPointer<vtkDICOMImageReader>);
 Q_DECLARE_METATYPE(dicomMetaDataVec);
 Q_DECLARE_METATYPE(dicomMetaDataMap);
+Q_DECLARE_METATYPE(dicomImageDataMap);
 
 #endif // COMMON_H

@@ -24,6 +24,14 @@ View_Dicom::~View_Dicom()
 
 void View_Dicom::slot_TreeItem_Clicked(QTreeWidgetItem *item, int col)
 {
+    QString selectUID = item->data(col, Role_seriesInstanceUID).toString();
+    QString tmp = this->p_vm_Dicom->get_Store_seriesInstanceUID();
+    if (selectUID != tmp)
+    {
+        // 이미지 변경
+        this->p_vm_Dicom->set_Store_ImageData_UID(selectUID);
+        this->p_vm_Dicom->set_Store_seriesInstanceUID(selectUID);
+    }
     int number = item->data(col, Role_Number).toInt();
     this->ui->verticalSlider->setValue(number);
 
@@ -143,8 +151,10 @@ void View_Dicom::slot_create_Mp_DicomMetaDat_From_Store()
             metaItem->setData(0, Role_seriesDate, metaData.seriesDate);
             metaItem->setData(0, Role_seriesTime, metaData.seriesTime);
             metaItem->setData(0, Role_seriesDescription, metaData.seriesDescription);
+            metaItem->setData(0, Role_seriesInstanceUID, metaData.seriesInstanceUID);
 
             seriesItem->addChild(metaItem);
+            // seriesItem->insertChild(0, metaItem);
         }
     }
 
@@ -572,6 +582,18 @@ void View_Dicom::slot_MainWindow_Resize()
     return;
 }
 
+int View_Dicom::cnv_Slice_To_Row(int slice)
+{
+    int sliceMax = this->sp_Axial_Viewer->GetSliceMax();
+    return sliceMax - slice;
+}
+
+int View_Dicom::cnv_Row_To_Slice(int row)
+{
+    int sliceMax = this->sp_Axial_Viewer->GetSliceMax();
+    return sliceMax - row;
+}
+
 void View_Dicom::init_UI_First()
 {
     this->ui->horizontalLayout_5->setStretch(0, 2);
@@ -615,12 +637,35 @@ void View_Dicom::init_UI_First()
     this->ui->tableWidget->setRowHeight(14, 40);
     this->ui->tableWidget->setRowHeight(15, 40);
     this->ui->tableWidget->setRowHeight(16, 40);
+
+    ui->verticalSlider->setInvertedAppearance(true);
+    ui->verticalSlider_2->setInvertedAppearance(true);
+    ui->verticalSlider_3->setInvertedAppearance(true);
+
+    // ui->verticalSlider->setInvertedControls(false);
+    // ui->verticalSlider_2->setInvertedControls(false);
+    // ui->verticalSlider_3->setInvertedControls(false);
     return;
 }
 /*
 (0008,0005)
 
  */
+
+QTreeWidgetItem *View_Dicom::find_TopLevleItem(const QString uid)
+{
+    for (int i = 0; i < this->ui->treeWidget->topLevelItemCount(); i++)
+    {
+        QTreeWidgetItem *item = this->ui->treeWidget->topLevelItem(i);
+
+        QString tmp = item->text(0);
+        if (tmp == uid)
+        {
+            return item;
+        }
+    }
+    return nullptr;
+}
 
 void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
 {
@@ -629,6 +674,15 @@ void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
         QSignalBlocker blocker(this->ui->verticalSlider);
         int cur = this->sp_Axial_Viewer->GetSlice();
         this->ui->verticalSlider->setSliderPosition(cur);
+
+        auto parent_Item = this->find_TopLevleItem(this->p_vm_Dicom->get_Store_seriesInstanceUID());
+        auto child_Item = parent_Item->child(cur);
+        if (child_Item != nullptr)
+        {
+            parent_Item->setExpanded(true);
+            this->ui->treeWidget->setCurrentItem(child_Item);
+            this->ui->treeWidget->scrollToItem(child_Item);
+        }
 
         this->cursorIndex[2] = cur;
         this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
@@ -749,10 +803,10 @@ void View_Dicom::init_connection()
 
     connect(this, &View_Dicom::sig_MainWindow_Resize, this, &View_Dicom::slot_MainWindow_Resize);
 
-    connect(this->ui->treeWidget,
-            &QTreeWidget::itemClicked,
-            this,
-            &View_Dicom::slot_TreeItem_Clicked);
+    this->ui->treeWidget->connect(this->ui->treeWidget,
+                                  &QTreeWidget::itemClicked,
+                                  this,
+                                  &View_Dicom::slot_TreeItem_Clicked);
 
     //===================== RollBtn =====================
     //===================== RollBtn =====================
@@ -947,8 +1001,9 @@ void View_Dicom::set_UI_slider()
     this->ui->verticalSlider_2->setEnabled(true);
     this->ui->verticalSlider_3->setEnabled(true);
 
-    this->ui->verticalSlider->setRange(this->sp_Axial_Viewer->GetSliceMin(),
-                                       this->sp_Axial_Viewer->GetSliceMax());
+    int axialMin = this->sp_Axial_Viewer->GetSliceMin();
+    int axialMax = this->sp_Axial_Viewer->GetSliceMax();
+    this->ui->verticalSlider->setRange(0, (axialMax - axialMin));
 
     this->ui->verticalSlider_2->setRange(this->sp_Sagittal_Viewer->GetSliceMin(),
                                          this->sp_Sagittal_Viewer->GetSliceMax());

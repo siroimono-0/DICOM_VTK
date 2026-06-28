@@ -204,37 +204,55 @@ void WK_Dicom_1::create_Mp_DicomMetaData()
     return;
 }
 
-QString WK_Dicom_1::makeTmpDir()
+QString WK_Dicom_1::makeDicomImage(const QString seriesInstanceUID)
 {
-    QString tmpPath = this->tmpDir.path();
-    qDebug() << tmpPath;
+    QTemporaryDir tmpDir;
+    QString tmpDirPath = tmpDir.path();
+    qDebug() << tmpDirPath;
 
-    QString seriesInstanceUID = this->cur_seriesInstanceUID;
-    seriesInstanceUID.replace(".", "_");
-    QString ret_tmpDirPath = tmpPath + "/DICOM_SERIES_" + this->cur_seriesInstanceUID;
+    // QString seriesInstanceUID = this->cur_seriesInstanceUID;
+    // seriesInstanceUID.replace(".", "_");
+    QString dirPath = tmpDirPath + "/DICOM_SERIES_" + cur_seriesInstanceUID;
 
-    QDir ret_dir(ret_tmpDirPath);
-    if (ret_dir.exists())
+    QDir dir(tmpDirPath);
+    if (dir.exists())
     {
-        ret_dir.removeRecursively();
+        dir.removeRecursively();
     }
 
-    ret_dir.mkpath(ret_tmpDirPath);
+    dir.mkpath(dirPath);
 
-    auto it_copy_Series = this->mp_DicomMetaData.find(this->cur_seriesInstanceUID);
+    auto it_copy_Series = this->mp_DicomMetaData.find(seriesInstanceUID);
 
     if (it_copy_Series == this->mp_DicomMetaData.end())
     {
+        qDebug() << "it_copy_Series == this->mp_DicomMetaData.end()";
         return "";
     }
 
     for (auto &metaData : it_copy_Series.value())
     {
-        QString dstPath = ret_tmpDirPath + "/" + metaData.fileName;
-        QFile::copy(metaData.filePath, dstPath);
+        QString dstPath = dirPath + "/" + metaData.fileName;
+        bool ret = QFile::copy(metaData.filePath, dstPath);
+        if (ret)
+        {
+            // qDebug() << "copy " << metaData.fileName;
+        }
+        else
+        {
+            // qDebug() << " ERR";
+        }
     }
 
-    return ret_tmpDirPath;
+    this->sp_Dicom_Reader->SetDirectoryName(dirPath.toStdString().c_str());
+    this->sp_Dicom_Reader->Update();
+
+    vtkSmartPointer<vtkImageData> sp_ret = vtkSmartPointer<vtkImageData>::New();
+
+    sp_ret->DeepCopy(this->sp_Dicom_Reader->GetOutput());
+    this->mp_DicomImage[seriesInstanceUID] = sp_ret;
+
+    return "";
 }
 
 void WK_Dicom_1::run_DicomFile()
@@ -249,25 +267,19 @@ void WK_Dicom_1::run_DicomFile()
     else if (this->type == path_Type::DIR_PATH)
     {
         this->create_Mp_DicomMetaData();
-        emit this->sig_create_Mp_DicomMetaData_Finished(std::move(this->mp_DicomMetaData));
-        QString tmpDirPath = this->makeTmpDir();
-        if (tmpDirPath.isEmpty())
+
+        for (auto it = this->mp_DicomMetaData.begin(); it != this->mp_DicomMetaData.end(); it++)
         {
-            return;
+            this->makeDicomImage(it.key());
         }
-        // QThread::sleep(20);
-        this->sp_Dicom_Reader->SetDirectoryName(path.toStdString().c_str());
+
+        emit this->sig_create_Mp_DicomMetaData_Finished(std::move(this->mp_DicomMetaData));
     }
+    emit this->sig_makeDicomImage_Finished(this->mp_DicomImage);
 
-    this->sp_Dicom_Reader->Update();
-
-    vtkSmartPointer<vtkImageData> sp_ret = vtkSmartPointer<vtkImageData>::New();
-
-    sp_ret->DeepCopy(this->sp_Dicom_Reader->GetOutput());
-
-    emit this->sig_DicomFile_Finished(sp_ret);
+    emit this->sig_DicomFile_Finished(this->mp_DicomImage[this->cur_seriesInstanceUID],
+                                      this->cur_seriesInstanceUID);
 
     emit this->sig_wk_End();
-    // emit this->sig_dicomFile_Load_To_VM_dicom(sp_ret);
     return;
 }

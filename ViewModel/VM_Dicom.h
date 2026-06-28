@@ -15,18 +15,27 @@ public:
                       QObject *parent = nullptr);
 
     void dicomFile_Load(const QString path, const path_Type type);
+    //==================== Set_STORE ====================
+    //==================== Set_STORE ====================
+    void set_Store_ImageData_UID(const QString UID);
+    void set_Store_seriesInstanceUID(const QString UID);
+    //==================== Set_STORE ====================
+    //==================== Set_STORE ====================
 
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
     vtkSmartPointer<vtkImageData> get_store_image();
     dicomMetaDataMap get_Store_DicomMetaMap();
+    QString get_Store_seriesInstanceUID();
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
 
 public slots:
-    void slot_dicomFile_Load_From_Svc(vtkSmartPointer<vtkImageData> ret);
+    void slot_dicomFile_Load_From_Svc(vtkSmartPointer<vtkImageData> ret, QString uid);
 
     void slot_create_Mp_DicomMetaDat_From_Svc(dicomMetaDataMap ret);
+
+    void slot_makeDicomImage_From_Svc(dicomImageDataMap ret);
 
 signals:
 
