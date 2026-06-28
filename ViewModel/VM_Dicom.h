@@ -19,11 +19,14 @@ public:
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
     vtkSmartPointer<vtkImageData> get_store_image();
+    dicomMetaDataMap get_Store_DicomMetaMap();
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
 
 public slots:
     void slot_dicomFile_Load_From_Svc(vtkSmartPointer<vtkImageData> ret);
+
+    void slot_create_Mp_DicomMetaDat_From_Svc(dicomMetaDataMap ret);
 
 signals:
 

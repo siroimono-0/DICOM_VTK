@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<vtkSmartPointer<vtkImageData>>("vtkSmartPointer<vtkImageData>");
     qRegisterMetaType<vtkSmartPointer<vtkDICOMImageReader>>("vtkSmartPointer<vtkDICOMImageReader>");
+    qRegisterMetaType<dicomMetaDataVec>("dicomMetaDataVec");
+    qRegisterMetaType<dicomMetaDataMap>("dicomMetaDataMap");
 
     AppContext appcontext;
     appcontext.get_p_v_Dicom()->show();

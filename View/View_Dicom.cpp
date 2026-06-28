@@ -22,6 +22,135 @@ View_Dicom::~View_Dicom()
     delete ui;
 }
 
+void View_Dicom::slot_TreeItem_Clicked(QTreeWidgetItem *item, int col)
+{
+    int number = item->data(col, Role_Number).toInt();
+    this->ui->verticalSlider->setValue(number);
+
+    // Patient
+    QTableWidgetItem *patientName = new QTableWidgetItem();
+    QString s1 = item->data(col, Role_patientName).toString();
+    patientName->setText(s1);
+    this->ui->tableWidget->setItem(0, 1, patientName);
+
+    QTableWidgetItem *patientID = new QTableWidgetItem();
+    QString s2 = item->data(col, Role_patientID).toString();
+    patientID->setText(s2);
+    this->ui->tableWidget->setItem(1, 1, patientID);
+
+    QTableWidgetItem *patientBirthDate = new QTableWidgetItem();
+    QString s3 = item->data(col, Role_patientBirthDate).toString();
+    patientBirthDate->setText(s3);
+    this->ui->tableWidget->setItem(2, 1, patientBirthDate);
+
+    QTableWidgetItem *patientSex = new QTableWidgetItem();
+    QString s4 = item->data(col, Role_patientSex).toString();
+    patientSex->setText(s4);
+    this->ui->tableWidget->setItem(3, 1, patientSex);
+
+    QTableWidgetItem *patientAge = new QTableWidgetItem();
+    QString s5 = item->data(col, Role_patientAge).toString();
+    patientAge->setText(s5);
+    this->ui->tableWidget->setItem(4, 1, patientAge);
+
+    QTableWidgetItem *patientWeight = new QTableWidgetItem();
+    QString s6 = item->data(col, Role_patientWeight).toString();
+    patientWeight->setText(s6);
+    this->ui->tableWidget->setItem(5, 1, patientWeight);
+
+    QTableWidgetItem *patientAddress = new QTableWidgetItem();
+    QString s7 = item->data(col, Role_patientAddress).toString();
+    patientAddress->setText(s7);
+    this->ui->tableWidget->setItem(6, 1, patientAddress);
+
+    // Study
+    QTableWidgetItem *studyDate = new QTableWidgetItem();
+    QString s8 = item->data(col, Role_studyDate).toString();
+    studyDate->setText(s8);
+    this->ui->tableWidget->setItem(8, 1, studyDate);
+
+    QTableWidgetItem *studyTime = new QTableWidgetItem();
+    QString s9 = item->data(col, Role_studyTime).toString();
+    studyTime->setText(s9);
+    this->ui->tableWidget->setItem(9, 1, studyTime);
+
+    QTableWidgetItem *studyID = new QTableWidgetItem();
+    QString s10 = item->data(col, Role_studyID).toString();
+    studyID->setText(s10);
+    this->ui->tableWidget->setItem(10, 1, studyID);
+
+    // Modality
+    QTableWidgetItem *modality = new QTableWidgetItem();
+    QString s11 = item->data(col, Role_modality).toString();
+    modality->setText(s11);
+    this->ui->tableWidget->setItem(11, 1, modality);
+
+    QTableWidgetItem *studyDescription = new QTableWidgetItem();
+    QString s12 = item->data(col, Role_studyDescription).toString();
+    studyDescription->setText(s12);
+    this->ui->tableWidget->setItem(12, 1, studyDescription);
+
+    // Series
+    QTableWidgetItem *seriesDate = new QTableWidgetItem();
+    QString s13 = item->data(col, Role_seriesDate).toString();
+    seriesDate->setText(s13);
+    this->ui->tableWidget->setItem(14, 1, seriesDate);
+
+    QTableWidgetItem *seriesTime = new QTableWidgetItem();
+    QString s14 = item->data(col, Role_seriesTime).toString();
+    seriesTime->setText(s14);
+    this->ui->tableWidget->setItem(15, 1, seriesTime);
+
+    QTableWidgetItem *seriesDescription = new QTableWidgetItem();
+    QString s15 = item->data(col, Role_seriesDescription).toString();
+    seriesDescription->setText(s15);
+    this->ui->tableWidget->setItem(16, 1, seriesDescription);
+
+    return;
+}
+
+void View_Dicom::slot_create_Mp_DicomMetaDat_From_Store()
+{
+    this->ui->treeWidget->setSortingEnabled(false);
+    this->ui->treeWidget->clear();
+
+    this->mp_DicomMetaData = this->p_vm_Dicom->get_Store_DicomMetaMap();
+
+    for (auto it = this->mp_DicomMetaData.begin(); it != this->mp_DicomMetaData.end(); it++)
+    {
+        // delete 자원회수는 QTreeWidget이 갖어감
+        QTreeWidgetItem *seriesItem = new QTreeWidgetItem();
+        seriesItem->setText(0, it.key());
+        this->ui->treeWidget->addTopLevelItem(seriesItem);
+
+        for (const dicomMetaData &metaData : it.value())
+        {
+            QTreeWidgetItem *metaItem = new QTreeWidgetItem();
+            metaItem->setText(0, metaData.fileName);
+            metaItem->setData(0, Role_Number, metaData.SliceIndex);
+            metaItem->setData(0, Role_patientName, metaData.patientName);
+            metaItem->setData(0, Role_patientID, metaData.patientID);
+            metaItem->setData(0, Role_patientBirthDate, metaData.patientBirthDate);
+            metaItem->setData(0, Role_patientSex, metaData.patientSex);
+            metaItem->setData(0, Role_patientAge, metaData.patientAge);
+            metaItem->setData(0, Role_patientWeight, metaData.patientWeight);
+            metaItem->setData(0, Role_patientAddress, metaData.patientAddress);
+            metaItem->setData(0, Role_studyDate, metaData.studyDate);
+            metaItem->setData(0, Role_studyTime, metaData.studyTime);
+            metaItem->setData(0, Role_studyID, metaData.studyID);
+            metaItem->setData(0, Role_modality, metaData.modality);
+            metaItem->setData(0, Role_studyDescription, metaData.studyDescription);
+            metaItem->setData(0, Role_seriesDate, metaData.seriesDate);
+            metaItem->setData(0, Role_seriesTime, metaData.seriesTime);
+            metaItem->setData(0, Role_seriesDescription, metaData.seriesDescription);
+
+            seriesItem->addChild(metaItem);
+        }
+    }
+
+    return;
+}
+
 void View_Dicom::set_UI_YX_vtkCommand(const int pos_Y,
                                       const int pos_X,
                                       const vtkResliceImageView_Type type)
@@ -455,8 +584,43 @@ void View_Dicom::init_UI_First()
     this->ui->verticalSlider->setEnabled(false);
     this->ui->verticalSlider_2->setEnabled(false);
     this->ui->verticalSlider_3->setEnabled(false);
+
+    this->ui->tableWidget->verticalHeader()->hide();
+    this->ui->tableWidget->setHorizontalHeaderLabels({"Tag Description", "Value"});
+    QFont headerFont;
+    headerFont.setPointSize(12);
+    headerFont.setBold(true);
+    this->ui->tableWidget->horizontalHeader()->setFont(headerFont);
+    // this->ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    this->ui->tableWidget->setColumnWidth(0, 150);
+    this->ui->tableWidget->setColumnWidth(1, 200);
+
+    QFont sellFont;
+    sellFont.setPointSize(12);
+    this->ui->tableWidget->setFont(sellFont);
+    this->ui->tableWidget->setRowHeight(0, 40);
+    this->ui->tableWidget->setRowHeight(1, 40);
+    this->ui->tableWidget->setRowHeight(2, 40);
+    this->ui->tableWidget->setRowHeight(3, 40);
+    this->ui->tableWidget->setRowHeight(4, 40);
+    this->ui->tableWidget->setRowHeight(5, 40);
+    this->ui->tableWidget->setRowHeight(6, 40);
+    this->ui->tableWidget->setRowHeight(7, 40);
+    this->ui->tableWidget->setRowHeight(8, 40);
+    this->ui->tableWidget->setRowHeight(9, 40);
+    this->ui->tableWidget->setRowHeight(10, 40);
+    this->ui->tableWidget->setRowHeight(11, 40);
+    this->ui->tableWidget->setRowHeight(12, 40);
+    this->ui->tableWidget->setRowHeight(13, 40);
+    this->ui->tableWidget->setRowHeight(14, 40);
+    this->ui->tableWidget->setRowHeight(15, 40);
+    this->ui->tableWidget->setRowHeight(16, 40);
     return;
 }
+/*
+(0008,0005)
+
+ */
 
 void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
 {
@@ -584,6 +748,11 @@ void View_Dicom::init_connection()
     });
 
     connect(this, &View_Dicom::sig_MainWindow_Resize, this, &View_Dicom::slot_MainWindow_Resize);
+
+    connect(this->ui->treeWidget,
+            &QTreeWidget::itemClicked,
+            this,
+            &View_Dicom::slot_TreeItem_Clicked);
 
     //===================== RollBtn =====================
     //===================== RollBtn =====================
@@ -736,6 +905,8 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
     this->sp_Sagittal_Viewer->Render();
     */
 
+    this->update_CrossHairLines();
+
     this->fix_ViewScale_Width(this->sp_Axial_Viewer,
                               this->ui->QVTK_axialWidget,
                               vtkResliceImageView_Type::AXIAL);
@@ -748,7 +919,6 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
 
     this->set_UI_slider();
 
-    this->update_CrossHairLines();
 
     this->sp_Axial_Viewer->Render();
     this->sp_Coronal_Viewer->Render();

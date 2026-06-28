@@ -16,9 +16,21 @@ vtkSmartPointer<vtkImageData> Store_Dicom::get_sp_image()
     return this->sp_image;
 }
 
+dicomMetaDataMap Store_Dicom::get_mp_DicomMetaData()
+{
+    return this->mp_DicomMetaData;
+}
+
 void Store_Dicom::set_sp_image(vtkSmartPointer<vtkImageData> set)
 {
     this->sp_image = set;
     emit this->sig_sp_image_change();
+    return;
+}
+
+void Store_Dicom::set_mp_DicomMetaData(dicomMetaDataMap set)
+{
+    this->mp_DicomMetaData = set;
+    emit this->sig_mp_DicomMetaData_change();
     return;
 }

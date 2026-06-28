@@ -11,6 +11,8 @@
 #include <QShowEvent>
 #include <QSignalBlocker>
 #include <QTimer>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QVTKOpenGLNativeWidget.h>
 
 #include <vtkActor.h>
@@ -79,6 +81,7 @@ public slots:
     void slot_Action_DirectoryOpen_Clicked();
 
     void slot_DicomFile_Reload_From_Store();
+    void slot_create_Mp_DicomMetaDat_From_Store();
     void slot_MainWindow_Resize();
 
     void slot_Axial_RollBtn_Left_Clicked();
@@ -94,6 +97,8 @@ public slots:
     void slot_Coronal_FlipBtn_Vertical_Clicked();
     void slot_Sagittal_FlipBtn_Horizontal_Clicked();
     void slot_Sagittal_FlipBtn_Vertical_Clicked();
+
+    void slot_TreeItem_Clicked(QTreeWidgetItem *item, int col);
 signals:
     void sig_MainWindow_Resize();
 
@@ -101,6 +106,11 @@ private:
     Ui::View_Dicom *ui;
 
     VM_Dicom *p_vm_Dicom = nullptr;
+    //========================== Model ==========================
+    //========================== Model ==========================
+    dicomMetaDataMap mp_DicomMetaData;
+    //========================== Model ==========================
+    //========================== Model ==========================
 
     //========================== VTK ==========================
     //========================== VTK ==========================

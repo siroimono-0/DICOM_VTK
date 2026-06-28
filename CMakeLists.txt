@@ -7,12 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets OpenGLWidgets)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Concurrent)
-find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt6 REQUIRED COMPONENTS Core)
 
 set(VTK_DIR "C:/Users/siroi/siroimono/w_qt/Dicom_demo/VTK-9.6.2/VTK-9.6.2/build/Desktop_Qt_6_9_3_MSVC2022_64bit-Debug/lib/cmake/vtk-9.6")
 
 set(DCMTK_DIR "C:/Users/siroi/dcmtk-install/cmake")
+
 
 find_package(DCMTK CONFIG REQUIRED)
 
@@ -57,6 +56,8 @@ qt_add_resources(
         ./image/time.svg
 )
 
+target_compile_definitions(DICOM_VTK PRIVATE NOMINMAX)
+
 target_link_libraries(DICOM_VTK
     PRIVATE
         Qt::Core
@@ -66,7 +67,6 @@ target_link_libraries(DICOM_VTK
 )
 target_link_libraries(DICOM_VTK PRIVATE Qt6::Core)
 target_link_libraries(DICOM_VTK PRIVATE Qt6::Concurrent)
-target_link_libraries(DICOM_VTK PRIVATE Qt6::Core)
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     "C:/Users/siroi/dcmtk-install/include"
@@ -80,6 +80,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     dcmdata
     oflog
     ofstd
+    oficonv
+    iphlpapi
+    netapi32
 )
 
 include(GNUInstallDirs)

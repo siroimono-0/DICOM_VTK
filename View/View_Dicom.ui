@@ -505,52 +505,113 @@
        </layout>
       </item>
       <item>
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
+       <widget class="QTableWidget" name="tableWidget">
         <property name="maximumSize">
          <size>
-          <width>400</width>
+          <width>500</width>
           <height>16777215</height>
          </size>
         </property>
-        <property name="currentIndex">
-         <number>0</number>
+        <property name="rowCount">
+         <number>17</number>
         </property>
-        <widget class="QWidget" name="tab">
-         <attribute name="title">
-          <string>Tab 1</string>
-         </attribute>
-         <widget class="QTableWidget" name="tableWidget">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>131</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="tab_2">
-         <attribute name="title">
-          <string>Tab 2</string>
-         </attribute>
-         <widget class="QTableView" name="tableView">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>131</width>
-            <height>171</height>
-           </rect>
-          </property>
-         </widget>
-        </widget>
+        <property name="columnCount">
+         <number>2</number>
+        </property>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <column/>
+        <column/>
+        <item row="0" column="0">
+         <property name="text">
+          <string>Patient Name</string>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string>Patient ID</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>Patient BirthDay</string>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string>Patient Sex</string>
+         </property>
+        </item>
+        <item row="4" column="0">
+         <property name="text">
+          <string>Patient Age</string>
+         </property>
+        </item>
+        <item row="5" column="0">
+         <property name="text">
+          <string>Patient Weight</string>
+         </property>
+        </item>
+        <item row="6" column="0">
+         <property name="text">
+          <string>Patient Address</string>
+         </property>
+        </item>
+        <item row="8" column="0">
+         <property name="text">
+          <string>Study Date</string>
+         </property>
+        </item>
+        <item row="9" column="0">
+         <property name="text">
+          <string>Study Time</string>
+         </property>
+        </item>
+        <item row="10" column="0">
+         <property name="text">
+          <string>Study ID</string>
+         </property>
+        </item>
+        <item row="11" column="0">
+         <property name="text">
+          <string>Modality</string>
+         </property>
+        </item>
+        <item row="12" column="0">
+         <property name="text">
+          <string>Study Description</string>
+         </property>
+        </item>
+        <item row="14" column="0">
+         <property name="text">
+          <string>Series Date</string>
+         </property>
+        </item>
+        <item row="15" column="0">
+         <property name="text">
+          <string>Series Time</string>
+         </property>
+        </item>
+        <item row="16" column="0">
+         <property name="text">
+          <string>Series Description</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
