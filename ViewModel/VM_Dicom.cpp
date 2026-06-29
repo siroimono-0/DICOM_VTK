@@ -6,8 +6,15 @@ VM_Dicom::VM_Dicom(I_Dicom_Common *i_dicom_common, Store_Dicom *st_Dicom, QObjec
     this->p_i_Dicom_common = i_dicom_common;
     this->p_st_Dicom = st_Dicom;
 }
+
+int VM_Dicom::get_Store_DicomMetaMap_CurUID_Size()
+{
+    return this->p_st_Dicom->get_Mp_DicomMetaData_CurUID_Size();
+}
+
 void VM_Dicom::set_Store_seriesInstanceUID(const QString UID)
 {
+    // 처음 아님 나중에 재설정 할때 UID 재설정
     this->p_st_Dicom->set_seriesInstanceUID(UID);
     return;
 }
@@ -29,7 +36,7 @@ void VM_Dicom::slot_makeDicomImage_From_Svc(dicomImageDataMap ret)
     return;
 }
 
-dicomMetaDataMap VM_Dicom::get_Store_DicomMetaMap()
+const dicomMetaDataMap &VM_Dicom::get_Store_DicomMetaMap() const
 {
     return this->p_st_Dicom->get_mp_DicomMetaData();
 }
@@ -42,8 +49,10 @@ void VM_Dicom::dicomFile_Load(const QString path, const path_Type type)
 
 void VM_Dicom::slot_dicomFile_Load_From_Svc(vtkSmartPointer<vtkImageData> ret, QString uid)
 {
+    // 파일열고 처음
     this->p_st_Dicom->set_sp_image(ret);
-    this->p_st_Dicom->set_seriesInstanceUID(uid);
+    this->p_st_Dicom->set_First_seriesInstanceUID(uid);
+
     return;
 }
 

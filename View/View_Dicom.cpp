@@ -22,19 +22,11 @@ View_Dicom::~View_Dicom()
     delete ui;
 }
 
-void View_Dicom::slot_TreeItem_Clicked(QTreeWidgetItem *item, int col)
+void View_Dicom::tableWidget_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *item,
+                                                              const int col)
 {
-    QString selectUID = item->data(col, Role_seriesInstanceUID).toString();
-    QString tmp = this->p_vm_Dicom->get_Store_seriesInstanceUID();
-    if (selectUID != tmp)
-    {
-        // 이미지 변경
-        this->p_vm_Dicom->set_Store_ImageData_UID(selectUID);
-        this->p_vm_Dicom->set_Store_seriesInstanceUID(selectUID);
-    }
-    int number = item->data(col, Role_Number).toInt();
-    this->ui->verticalSlider->setValue(number);
-
+    // ================= TableWidget 세팅 =================
+    // ================= TableWidget 세팅 =================
     // Patient
     QTableWidgetItem *patientName = new QTableWidgetItem();
     QString s1 = item->data(col, Role_patientName).toString();
@@ -113,8 +105,87 @@ void View_Dicom::slot_TreeItem_Clicked(QTreeWidgetItem *item, int col)
     QString s15 = item->data(col, Role_seriesDescription).toString();
     seriesDescription->setText(s15);
     this->ui->tableWidget->setItem(16, 1, seriesDescription);
+    // ================= TableWidget 세팅 =================
+    // ================= TableWidget 세팅 =================
 
     return;
+}
+
+void View_Dicom::label_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *item, const int col)
+{
+    // ===================== 왼쪽 위 =====================
+    // ===================== 왼쪽 위 =====================
+    QString patientName = item->data(col, Role_patientName).toString();
+    this->ui->axialLabel_Patient_Name->setText(patientName);
+
+    QString patientID = item->data(col, Role_patientID).toString();
+    this->ui->axialLabel_Patient_ID->setText(patientID);
+
+    QString patientBirthDate = item->data(col, Role_patientBirthDate).toString();
+    this->ui->axialLabel_Patient_Birth_Date->setText(patientBirthDate);
+
+    QString studyDescription = item->data(col, Role_studyDescription).toString();
+    this->ui->axialLabel_Study_Description->setText(studyDescription);
+
+    QString seriesDescription = item->data(col, Role_seriesDescription).toString();
+    this->ui->axialLabel_Series_Description->setText(seriesDescription);
+    // ===================== 왼쪽 위 =====================
+    // ===================== 왼쪽 위 =====================
+
+    // ===================== 오른쪽 위 =====================
+    // ===================== 오른쪽 위 =====================
+    QString institutionName = item->data(col, Role_institutionName).toString();
+    this->ui->axialLabel_Institution_Name->setText(institutionName);
+
+    QString manufacturerModelName = item->data(col, Role_manufacturerModelName).toString();
+    this->ui->axialLabel_Manufacturer_Model_Name->setText(manufacturerModelName);
+
+    QString acquisitionDate = item->data(col, Role_acquisitionDate).toString();
+    this->ui->axialLabel_Acquisition_Date->setText(acquisitionDate);
+
+    QString acquisitionTime = item->data(col, Role_acquisitionTime).toString();
+    this->ui->axialLabel_Acquisition_Time->setText(acquisitionTime);
+    // ===================== 오른쪽 위 =====================
+    // ===================== 오른쪽 위 =====================
+
+    // ===================== 왼쪽 아래 =====================
+    // ===================== 왼쪽 아래 =====================
+    QString sliceThickness = item->data(col, Role_sliceThickness).toString();
+    this->ui->axialLabel_Slice_Thickness->setText(sliceThickness);
+
+    QString sliceLocation = item->data(col, Role_sliceLocation).toString();
+    this->ui->axialLabel_Slice_Location->setText(sliceLocation);
+
+    QString modality = item->data(col, Role_modality).toString();
+    this->ui->axialLabel_Modality->setText(modality);
+
+    QString instanceNumber = item->data(col, Role_instanceNumber).toString();
+    this->ui->axialLabel_Instance_Number->setText(instanceNumber);
+
+    QString seriesNumber = item->data(col, Role_seriesNumber).toString();
+    this->ui->axialLabel_Series_Number->setText(seriesNumber);
+    // ===================== 왼쪽 아래 =====================
+    // ===================== 왼쪽 아래 =====================
+
+    return;
+}
+
+void View_Dicom::slot_TreeItem_Clicked(QTreeWidgetItem *item, int col)
+{
+    QString selectUID = item->data(col, Role_seriesInstanceUID).toString();
+    QString tmp = this->p_vm_Dicom->get_Store_seriesInstanceUID();
+    if (selectUID != tmp)
+    {
+        // 이미지 변경
+        this->p_vm_Dicom->set_Store_ImageData_UID(selectUID);
+        this->p_vm_Dicom->set_Store_seriesInstanceUID(selectUID);
+    }
+
+    int number = this->cnv_Slice_To_Row(item->data(col, Role_Number).toInt());
+    this->ui->verticalSlider->setValue(number);
+
+    this->tableWidget_Setting_In_slot_TreeItem_Clicked(item, col);
+    this->label_Setting_In_slot_TreeItem_Clicked(item, col);
 }
 
 void View_Dicom::slot_create_Mp_DicomMetaDat_From_Store()
@@ -152,6 +223,16 @@ void View_Dicom::slot_create_Mp_DicomMetaDat_From_Store()
             metaItem->setData(0, Role_seriesTime, metaData.seriesTime);
             metaItem->setData(0, Role_seriesDescription, metaData.seriesDescription);
             metaItem->setData(0, Role_seriesInstanceUID, metaData.seriesInstanceUID);
+
+            metaItem->setData(0, Role_seriesDescription, metaData.seriesDescription);
+            metaItem->setData(0, Role_institutionName, metaData.institutionName);
+            metaItem->setData(0, Role_manufacturerModelName, metaData.manufacturerModelName);
+            metaItem->setData(0, Role_acquisitionDate, metaData.acquisitionDate);
+            metaItem->setData(0, Role_acquisitionTime, metaData.acquisitionTime);
+            metaItem->setData(0, Role_sliceThickness, metaData.sliceThickness);
+            metaItem->setData(0, Role_sliceLocation, metaData.sliceLocation);
+            metaItem->setData(0, Role_seriesNumber, metaData.seriesNumber);
+            metaItem->setData(0, Role_instanceNumber, metaData.instanceNumber);
 
             seriesItem->addChild(metaItem);
             // seriesItem->insertChild(0, metaItem);
@@ -672,7 +753,8 @@ void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
     if (type == vtkResliceImageView_Type::AXIAL)
     {
         QSignalBlocker blocker(this->ui->verticalSlider);
-        int cur = this->sp_Axial_Viewer->GetSlice();
+        int tmp = this->sp_Axial_Viewer->GetSlice();
+        int cur = this->cnv_Slice_To_Row(tmp);
         this->ui->verticalSlider->setSliderPosition(cur);
 
         auto parent_Item = this->find_TopLevleItem(this->p_vm_Dicom->get_Store_seriesInstanceUID());
@@ -682,9 +764,10 @@ void View_Dicom::set_UI_slider_vtkCommand(const vtkResliceImageView_Type type)
             parent_Item->setExpanded(true);
             this->ui->treeWidget->setCurrentItem(child_Item);
             this->ui->treeWidget->scrollToItem(child_Item);
+            this->slot_TreeItem_Clicked(child_Item, 0);
         }
 
-        this->cursorIndex[2] = cur;
+        this->cursorIndex[2] = tmp;
         this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
         this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
         this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
@@ -763,7 +846,9 @@ void View_Dicom::init_connection()
             &View_Dicom::slot_Action_DirectoryOpen_Clicked);
 
     connect(this->ui->verticalSlider, &QSlider::valueChanged, this, [this](int val) {
-        this->cursorIndex[2] = val;
+        int slice = this->cnv_Slice_To_Row(val);
+
+        this->cursorIndex[2] = slice;
         this->sp_Axial_Viewer->SetSlice(cursorIndex[2]);
         this->sp_Sagittal_Viewer->SetSlice(cursorIndex[0]);
         this->sp_Coronal_Viewer->SetSlice(cursorIndex[1]);
@@ -973,7 +1058,6 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
 
     this->set_UI_slider();
 
-
     this->sp_Axial_Viewer->Render();
     this->sp_Coronal_Viewer->Render();
     this->sp_Sagittal_Viewer->Render();
@@ -988,6 +1072,30 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
              << this->sp_Sagittal_Viewer->GetSliceMax();
 
     return;
+}
+
+void View_Dicom::slot_Set_First_TreeItem_Position_From_Store()
+{
+    //====================== 트리 하이라이트 처음 =====================
+    //====================== 트리 하이라이트 처음 =====================
+
+    int slice = this->sp_Axial_Viewer->GetSlice();
+    int row = this->cnv_Slice_To_Row(slice);
+    auto tmp = this->p_vm_Dicom->get_Store_seriesInstanceUID();
+
+    auto parent_Item = this->find_TopLevleItem(this->p_vm_Dicom->get_Store_seriesInstanceUID());
+    auto child_Item = parent_Item->child(row);
+    if (child_Item != nullptr)
+    {
+        parent_Item->setExpanded(true);
+        this->ui->treeWidget->setCurrentItem(child_Item);
+        this->ui->treeWidget->scrollToItem(child_Item);
+
+        this->slot_TreeItem_Clicked(child_Item, 0);
+    }
+    // this->
+    //====================== 트리 하이라이트 처음 =====================
+    //====================== 트리 하이라이트 처음 =====================
 }
 
 void View_Dicom::set_UI_slider()
@@ -1011,9 +1119,12 @@ void View_Dicom::set_UI_slider()
     this->ui->verticalSlider_3->setRange(this->sp_Coronal_Viewer->GetSliceMin(),
                                          this->sp_Coronal_Viewer->GetSliceMax());
 
-    int axial_min = this->sp_Axial_Viewer->GetSliceMin();
-    int axial_max = this->sp_Axial_Viewer->GetSliceMax();
-    this->ui->verticalSlider->setSliderPosition((axial_min + axial_max) / 2);
+    // int axial_min = this->sp_Axial_Viewer->GetSliceMin();
+    // int axial_max = this->sp_Axial_Viewer->GetSliceMax();
+    // this->ui->verticalSlider->setSliderPosition((axial_min + axial_max) / 2);
+    int axialCenter = (axialMin + axialMax) / 2;
+    int axialRow = this->cnv_Slice_To_Row(axialCenter);
+    this->ui->verticalSlider->setValue(axialRow);
 
     int sagittal_min = this->sp_Sagittal_Viewer->GetSliceMin();
     int sagittal_max = this->sp_Sagittal_Viewer->GetSliceMax();
@@ -1022,6 +1133,7 @@ void View_Dicom::set_UI_slider()
     int coronal_min = this->sp_Coronal_Viewer->GetSliceMin();
     int coronal_max = this->sp_Coronal_Viewer->GetSliceMax();
     this->ui->verticalSlider_3->setSliderPosition((coronal_min + coronal_max) / 2);
+
     // ===================== UI Slider =====================
 }
 

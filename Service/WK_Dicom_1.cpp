@@ -117,6 +117,41 @@ void WK_Dicom_1::create_Mp_DicomMetaData()
 
     if (this->type == path_Type::FILE_PATH)
     {
+        QFile file(this->path);
+        QFileInfo fileInfo;
+        fileInfo.setFile(file);
+
+        // DcmFileFormat에 사용할 수 있도록 변환
+        QByteArray localPath = QFile::encodeName(fileInfo.absoluteFilePath());
+
+        DcmFileFormat dicomFile;
+
+        // DICOM 파일 맞는지 확인
+        OFCondition status = dicomFile.loadFile(localPath.constData(),
+                                                EXS_Unknown,
+                                                EGL_noChange,
+                                                DCM_MaxReadLength,
+                                                ERM_autoDetect);
+        if (status.bad())
+        {
+            // Err
+            return;
+        }
+
+        DcmDataset *dataset = dicomFile.getDataset();
+
+        if (dataset == nullptr)
+        {
+            return;
+        }
+
+        // DICOM 파일만 push
+        // DICOM 메타데이터 추출
+        dicomMetaData meta = this->read_DicomMetaData(fileInfo.absoluteFilePath(),
+                                                      fileInfo.fileName());
+
+        this->mp_DicomMetaData[meta.seriesInstanceUID].push_back(meta);
+        this->cur_seriesInstanceUID = meta.seriesInstanceUID;
     }
     else if (this->type == path_Type::DIR_PATH)
     {
@@ -262,7 +297,10 @@ void WK_Dicom_1::run_DicomFile()
 
     if (this->type == path_Type::FILE_PATH)
     {
-        this->sp_Dicom_Reader->SetFileName(path.toStdString().c_str());
+        this->create_Mp_DicomMetaData();
+        // this->sp_Dicom_Reader->SetFileName(path.toStdString().c_str());
+        this->makeDicomImage(this->cur_seriesInstanceUID);
+        emit this->sig_create_Mp_DicomMetaData_Finished(std::move(this->mp_DicomMetaData));
     }
     else if (this->type == path_Type::DIR_PATH)
     {

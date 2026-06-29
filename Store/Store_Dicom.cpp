@@ -6,6 +6,11 @@ Store_Dicom::Store_Dicom(QObject *parent)
     this->init();
 }
 
+int Store_Dicom::get_Mp_DicomMetaData_CurUID_Size()
+{
+    return this->mp_DicomMetaData[this->seriesInstanceUID].size();
+}
+
 void Store_Dicom::set_mp_Image(dicomImageDataMap set)
 {
     this->mp_Image = set;
@@ -15,6 +20,13 @@ void Store_Dicom::set_mp_Image(dicomImageDataMap set)
 QString Store_Dicom::get_seriesInstanceUID()
 {
     return this->seriesInstanceUID;
+}
+
+void Store_Dicom::set_First_seriesInstanceUID(const QString set)
+{
+    this->seriesInstanceUID = set;
+    emit sig_First_seriesInstanceUID_To_View_Dicom();
+    return;
 }
 
 void Store_Dicom::set_seriesInstanceUID(const QString set)
@@ -33,7 +45,7 @@ vtkSmartPointer<vtkImageData> Store_Dicom::get_sp_image()
     return this->sp_image;
 }
 
-dicomMetaDataMap Store_Dicom::get_mp_DicomMetaData()
+const dicomMetaDataMap &Store_Dicom::get_mp_DicomMetaData() const
 {
     return this->mp_DicomMetaData;
 }

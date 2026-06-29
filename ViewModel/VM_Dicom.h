@@ -25,8 +25,9 @@ public:
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
     vtkSmartPointer<vtkImageData> get_store_image();
-    dicomMetaDataMap get_Store_DicomMetaMap();
+    const dicomMetaDataMap &get_Store_DicomMetaMap() const;
     QString get_Store_seriesInstanceUID();
+    int get_Store_DicomMetaMap_CurUID_Size();
     //=====================Get_STORE=====================
     //=====================Get_STORE=====================
 

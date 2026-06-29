@@ -79,13 +79,19 @@ public:
     int cnv_Slice_To_Row(int slice);
     int cnv_Row_To_Slice(int row);
 
+    void tableWidget_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *item, const int col);
+    void label_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *item, const int col);
+
 public slots:
-    //======================UI SLOT=====================
-    void slot_Action_FileOpen_Clicked();
-    void slot_Action_DirectoryOpen_Clicked();
 
     void slot_DicomFile_Reload_From_Store();
     void slot_create_Mp_DicomMetaDat_From_Store();
+    void slot_Set_First_TreeItem_Position_From_Store();
+
+    //======================UI SLOT=====================
+    //======================UI SLOT=====================
+    void slot_Action_FileOpen_Clicked();
+    void slot_Action_DirectoryOpen_Clicked();
     void slot_MainWindow_Resize();
 
     void slot_Axial_RollBtn_Left_Clicked();
@@ -103,6 +109,8 @@ public slots:
     void slot_Sagittal_FlipBtn_Vertical_Clicked();
 
     void slot_TreeItem_Clicked(QTreeWidgetItem *item, int col);
+    //======================UI SLOT=====================
+    //======================UI SLOT=====================
 signals:
     void sig_MainWindow_Resize();
 
@@ -112,6 +120,7 @@ private:
     VM_Dicom *p_vm_Dicom = nullptr;
 
     QString cur_seriesInstanceUID;
+    // int cur_axialSlice;
     //========================== Model ==========================
     //========================== Model ==========================
     dicomMetaDataMap mp_DicomMetaData;

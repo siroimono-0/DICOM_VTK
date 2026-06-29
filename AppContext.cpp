@@ -78,5 +78,11 @@ void AppContext::init_connect_p_st_Dicom_To_p_v_Dicom()
             &Store_Dicom::sig_mp_DicomMetaData_change,
             this->p_v_Dicom,
             &View_Dicom::slot_create_Mp_DicomMetaDat_From_Store);
+
+    connect(this->p_st_Dicom,
+            &Store_Dicom::sig_First_seriesInstanceUID_To_View_Dicom,
+            this->p_v_Dicom,
+            &View_Dicom::slot_Set_First_TreeItem_Position_From_Store);
+
     return;
 }

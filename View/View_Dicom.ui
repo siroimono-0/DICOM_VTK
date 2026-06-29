@@ -217,6 +217,193 @@
             <string/>
            </property>
           </widget>
+          <widget class="QLabel" name="axialLabel_Patient_Name">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>20</y>
+             <width>300</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Patient_ID">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>40</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Patient_Birth_Date">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>60</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Series_Description">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>100</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Study_Description">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>80</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Slice_Thickness">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>560</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Slice_Location">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>560</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Modality">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>600</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Instance_Number">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>620</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Institution_Name">
+           <property name="geometry">
+            <rect>
+             <x>390</x>
+             <y>30</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Manufacturer_Model_Name">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>60</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Acquisition_Date">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>90</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Acquisition_Time">
+           <property name="geometry">
+            <rect>
+             <x>440</x>
+             <y>90</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="axialLabel_Series_Number">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>650</y>
+             <width>50</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>

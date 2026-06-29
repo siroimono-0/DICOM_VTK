@@ -41,7 +41,18 @@ enum treeItem_DataType {
     Role_seriesDescription,
 
     //
-    Role_seriesInstanceUID
+    Role_seriesInstanceUID,
+
+    Role_institutionName,
+    Role_manufacturerModelName,
+
+    Role_acquisitionDate,
+    Role_acquisitionTime,
+
+    Role_sliceThickness,
+    Role_sliceLocation,
+    Role_seriesNumber,
+    Role_instanceNumber
 };
 enum class path_Type { FILE_PATH, DIR_PATH };
 
