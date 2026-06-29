@@ -720,8 +720,8 @@ void View_Dicom::init_UI_First()
     this->ui->tableWidget->setRowHeight(16, 40);
 
     ui->verticalSlider->setInvertedAppearance(true);
-    ui->verticalSlider_2->setInvertedAppearance(true);
-    ui->verticalSlider_3->setInvertedAppearance(true);
+    ui->verticalSlider_2->setInvertedAppearance(false);
+    ui->verticalSlider_3->setInvertedAppearance(false);
 
     // ui->verticalSlider->setInvertedControls(false);
     // ui->verticalSlider_2->setInvertedControls(false);
