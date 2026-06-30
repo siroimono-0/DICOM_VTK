@@ -76,6 +76,7 @@ void CallBack_VtkCommand::Execute(vtkObject* caller, unsigned long eventId, void
     if (eventId == vtkResliceImageViewer::SliceChangedEvent)
     {
         this->p_v_Dicom->set_UI_slider_vtkCommand(this->viewType);
+        this->p_v_Dicom->set_UI_ImageCountLabel_VtkCommand(this->viewType);
     }
     return;
 }

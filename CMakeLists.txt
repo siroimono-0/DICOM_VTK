@@ -3,6 +3,9 @@ project(DICOM_VTK LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets OpenGLWidgets)
 find_package(Qt6 REQUIRED COMPONENTS Core)
@@ -47,6 +50,9 @@ qt_add_executable(DICOM_VTK
     Common.h
     CallBack_VtkCommand.h CallBack_VtkCommand.cpp
     Service/WK_Dicom_1.h Service/WK_Dicom_1.cpp
+    View/View_Dia_Win_Level_Set.h
+    View/View_Dia_Win_Level_Set.cpp
+    View/View_Dia_Win_Level_Set.ui
 )
 
 qt_add_resources(

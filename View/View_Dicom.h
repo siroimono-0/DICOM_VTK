@@ -3,9 +3,12 @@
 
 #include "../CallBack_VtkCommand.h"
 #include "../ViewModel/VM_Dicom.h"
+#include "./View_Dia_Win_Level_Set.h"
+#include <cmath>
 
 #include <QDebug>
 #include <QFileDialog>
+#include <QFontMetrics>
 #include <QMainWindow>
 #include <QResizeEvent>
 #include <QShowEvent>
@@ -20,6 +23,8 @@
 #include <vtkDICOMImageReader.h>
 #include <vtkGenericOpenGLRenderWindow.h>
 #include <vtkImageActor.h>
+#include <vtkImageMapToColors.h>
+// #include <vtkImageMapToWindowLevelColors.h>
 #include <vtkImageViewer2.h>
 #include <vtkLineSource.h>
 #include <vtkNew.h>
@@ -56,6 +61,9 @@ public:
     void init_Render_Windo();
     void init_Reslice_Viewr();
     void init_UI_First();
+    void init_Dialog();
+    void setting_MetaDataLabelSize_IN_init_UI_First();
+    void setting_Action_SetShortcuts();
     void init_CrossHairLines(crossHairLines &cross,
                              vtkRenderer *render,
                              const crossHairLines_Type type);
@@ -64,6 +72,8 @@ public:
     void set_UI_slider();
     void set_UI_slider_vtkCommand(const vtkResliceImageView_Type type);
     void set_UI_YX_vtkCommand(const int pos_Y, const int pos_X, const vtkResliceImageView_Type type);
+    void set_UI_ImageCountLabel_VtkCommand(vtkResliceImageView_Type type);
+    void set_Sagittal_Coronal_ImageChange(vtkResliceImageView_Type type);
 
     void fix_ViewScale_Width(vtkResliceImageViewer *p_Reslice_Viewer,
                              QVTKOpenGLNativeWidget *p_UI_Widget,
@@ -92,6 +102,7 @@ public slots:
     //======================UI SLOT=====================
     void slot_Action_FileOpen_Clicked();
     void slot_Action_DirectoryOpen_Clicked();
+    void slot_Action_Window_Setting_Clicked();
     void slot_MainWindow_Resize();
 
     void slot_Axial_RollBtn_Left_Clicked();
@@ -109,8 +120,16 @@ public slots:
     void slot_Sagittal_FlipBtn_Vertical_Clicked();
 
     void slot_TreeItem_Clicked(QTreeWidgetItem *item, int col);
+
     //======================UI SLOT=====================
     //======================UI SLOT=====================
+
+    //======================Dialog SLOT=====================
+    //======================Dialog SLOT=====================
+    void slot_Set_Window(int set);
+    void slot_Set_Level(int set);
+    //======================Dialog SLOT=====================
+    //======================Dialog SLOT=====================
 signals:
     void sig_MainWindow_Resize();
 
@@ -118,6 +137,8 @@ private:
     Ui::View_Dicom *ui;
 
     VM_Dicom *p_vm_Dicom = nullptr;
+
+    View_Dia_Win_Level_Set *p_v_Dia_WinLevelSet = nullptr;
 
     QString cur_seriesInstanceUID;
     // int cur_axialSlice;

@@ -18,6 +18,13 @@ AppContext::~AppContext()
     this->p_v_Dicom->deleteLater();
 }
 
+/*
+void AppContext::init_p_v_Dia_WinLevelSetting()
+{
+    this->p_v_Dia_WinLevelSetting = new View_Dia_Win_Level_Set(this->p_vm_Dicom);
+    return;
+}*/
+
 View_Dicom *AppContext::get_p_v_Dicom()
 {
     return this->p_v_Dicom;

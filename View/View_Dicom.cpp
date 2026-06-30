@@ -13,6 +13,8 @@ View_Dicom::View_Dicom(VM_Dicom *vm_Dicom, QWidget *parent)
     this->init_Render_Windo();
     this->init_connection();
 
+    this->init_Dialog();
+
     QIcon icon(":/image/time.svg");
     this->ui->pushButton_1->setIcon(icon);
 }
@@ -20,6 +22,61 @@ View_Dicom::View_Dicom(VM_Dicom *vm_Dicom, QWidget *parent)
 View_Dicom::~View_Dicom()
 {
     delete ui;
+}
+
+void View_Dicom::init_Dialog()
+{
+    this->p_v_Dia_WinLevelSet = new View_Dia_Win_Level_Set(this->p_vm_Dicom);
+    // connect();
+    return;
+}
+
+void View_Dicom::slot_Set_Window(int set)
+{
+    double window = static_cast<double>(set);
+    this->sp_Axial_Viewer->SetColorWindow(window);
+    this->sp_Sagittal_Viewer->SetColorWindow(window);
+    this->sp_Coronal_Viewer->SetColorWindow(window);
+    return;
+}
+
+void View_Dicom::slot_Set_Level(int set)
+{
+    double level = static_cast<double>(set);
+    this->sp_Axial_Viewer->SetColorLevel(level);
+    this->sp_Sagittal_Viewer->SetColorLevel(level);
+    this->sp_Coronal_Viewer->SetColorLevel(level);
+    return;
+}
+
+void View_Dicom::set_UI_ImageCountLabel_VtkCommand(vtkResliceImageView_Type type)
+{
+    this->set_Sagittal_Coronal_ImageChange(type);
+    return;
+}
+
+void View_Dicom::set_Sagittal_Coronal_ImageChange(vtkResliceImageView_Type type)
+{
+    if (type == vtkResliceImageView_Type::SAGITTAL)
+    {
+        QString qs_sagittal_img_cur = QString::number(this->sp_Sagittal_Viewer->GetSlice());
+        QString qs_sagittal_img_total = QString::number(this->sp_Sagittal_Viewer->GetSliceMax());
+        QString qs_sagittal_img_ret = QString("Image: %1/%2")
+                                          .arg(qs_sagittal_img_cur, qs_sagittal_img_total);
+
+        this->ui->sagittalLabel_Instance_Number->setText(qs_sagittal_img_ret);
+    }
+    else if (type == vtkResliceImageView_Type::CORONAL)
+    {
+        QString qs_coronal_img_cur = QString::number(this->sp_Coronal_Viewer->GetSlice());
+        QString qs_coronal_img_total = QString::number(this->sp_Coronal_Viewer->GetSliceMax());
+        QString qs_coronal_img_ret = QString("Image: %1/%2")
+                                         .arg(qs_coronal_img_cur, qs_coronal_img_total);
+
+        this->ui->coronalLabel_Instance_Number->setText(qs_coronal_img_ret);
+    }
+
+    return;
 }
 
 void View_Dicom::tableWidget_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *item,
@@ -129,6 +186,23 @@ void View_Dicom::label_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *i
 
     QString seriesDescription = item->data(col, Role_seriesDescription).toString();
     this->ui->axialLabel_Series_Description->setText(seriesDescription);
+
+    // =================== sagital ===================
+    this->ui->sagittalLabel_Patient_Name->setText(patientName);
+    this->ui->sagittalLabel_Patient_ID->setText(patientID);
+    this->ui->sagittalLabel_Patient_Birth_Date->setText(patientBirthDate);
+    this->ui->sagittalLabel_Study_Description->setText(studyDescription);
+    this->ui->sagittalLabel_Series_Description->setText(seriesDescription);
+    // =================== sagital ===================
+
+    // =================== coronal ===================
+    this->ui->coronalLabel_Patient_Name->setText(patientName);
+    this->ui->coronalLabel_Patient_ID->setText(patientID);
+    this->ui->coronalLabel_Patient_Birth_Date->setText(patientBirthDate);
+    this->ui->coronalLabel_Study_Description->setText(studyDescription);
+    this->ui->coronalLabel_Series_Description->setText(seriesDescription);
+    // =================== coronal ===================
+
     // ===================== 왼쪽 위 =====================
     // ===================== 왼쪽 위 =====================
 
@@ -140,30 +214,86 @@ void View_Dicom::label_Setting_In_slot_TreeItem_Clicked(const QTreeWidgetItem *i
     QString manufacturerModelName = item->data(col, Role_manufacturerModelName).toString();
     this->ui->axialLabel_Manufacturer_Model_Name->setText(manufacturerModelName);
 
-    QString acquisitionDate = item->data(col, Role_acquisitionDate).toString();
-    this->ui->axialLabel_Acquisition_Date->setText(acquisitionDate);
+    std::string acquisitionDate = item->data(col, Role_acquisitionDate).toString().toStdString();
+    std::string acquisitionDate_1(acquisitionDate.begin(), acquisitionDate.begin() + 4);
+    std::string acquisitionDate_2(acquisitionDate.begin() + 4, acquisitionDate.begin() + 6);
+    std::string acquisitionDate_3(acquisitionDate.begin() + 6, acquisitionDate.begin() + 8);
+    acquisitionDate = acquisitionDate_1 + "-" + acquisitionDate_2 + "-" + acquisitionDate_3;
+    QString acquisitionDate_ret = QString::fromStdString(acquisitionDate);
 
-    QString acquisitionTime = item->data(col, Role_acquisitionTime).toString();
-    this->ui->axialLabel_Acquisition_Time->setText(acquisitionTime);
+    std::string acquisitionTime = item->data(col, Role_acquisitionTime).toString().toStdString();
+    std::string acquisitionTime_1(acquisitionTime.begin(), acquisitionTime.begin() + 2);
+    std::string acquisitionTime_2(acquisitionTime.begin() + 2, acquisitionTime.begin() + 4);
+    std::string acquisitionTime_3(acquisitionTime.begin() + 4, acquisitionTime.begin() + 6);
+    acquisitionTime = acquisitionTime_1 + ":" + acquisitionTime_2 + ":" + acquisitionTime_3;
+    QString acquisitionTime_ret = QString::fromStdString(acquisitionTime);
+
+    this->ui->axialLabel_Acquisition_Date->setText(acquisitionDate_ret + "   "
+                                                   + acquisitionTime_ret);
+    // this->ui->axialLabel_Acquisition_Time->setText(acquisitionTime_ret);
+
+    // =================== sagital ===================
+    this->ui->sagittalLabel_Institution_Name->setText(institutionName);
+    this->ui->sagittalLabel_Manufacturer_Model_Name->setText(manufacturerModelName);
+    this->ui->sagittalLabel_Acquisition_Date->setText(acquisitionDate_ret + "   "
+                                                      + acquisitionTime_ret);
+    // =================== sagital ===================
+
+    // =================== coronal ===================
+    this->ui->coronalLabel_Institution_Name->setText(institutionName);
+    this->ui->coronalLabel_Manufacturer_Model_Name->setText(manufacturerModelName);
+    this->ui->coronalLabel_Acquisition_Date->setText(acquisitionDate_ret + "   "
+                                                     + acquisitionTime_ret);
+    // =================== coronal ===================
+
     // ===================== 오른쪽 위 =====================
     // ===================== 오른쪽 위 =====================
 
     // ===================== 왼쪽 아래 =====================
     // ===================== 왼쪽 아래 =====================
     QString sliceThickness = item->data(col, Role_sliceThickness).toString();
-    this->ui->axialLabel_Slice_Thickness->setText(sliceThickness);
+    double sliceLocation = item->data(col, Role_sliceLocation).toDouble();
+    sliceLocation *= 100;
+    sliceLocation = std::round(sliceLocation);
+    sliceLocation /= 100;
 
-    QString sliceLocation = item->data(col, Role_sliceLocation).toString();
-    this->ui->axialLabel_Slice_Location->setText(sliceLocation);
+    QString sliceLocation_ret = QString::number(sliceLocation);
+
+    QString tmp = QString("ST: %1mm   SL: %2mm").arg(sliceThickness).arg(sliceLocation);
+    this->ui->axialLabel_Slice_Thickness->setText(tmp);
+
+    // QString sliceLocation = item->data(col, Role_sliceLocation).toString();
+    // this->ui->axialLabel_Slice_Location->setText(sliceLocation);
 
     QString modality = item->data(col, Role_modality).toString();
     this->ui->axialLabel_Modality->setText(modality);
 
     QString instanceNumber = item->data(col, Role_instanceNumber).toString();
-    this->ui->axialLabel_Instance_Number->setText(instanceNumber);
+    int total_size = this->p_vm_Dicom->get_Store_DicomMetaMap_CurUID_Size();
+    QString qs_total_size = QString::number(total_size);
+    QString tmp2 = QString("Images: %1/%2").arg(instanceNumber, qs_total_size);
+    this->ui->axialLabel_Instance_Number->setText(tmp2);
 
     QString seriesNumber = item->data(col, Role_seriesNumber).toString();
-    this->ui->axialLabel_Series_Number->setText(seriesNumber);
+    QString seriesNumber_ret = QString("Series %1").arg(seriesNumber);
+    this->ui->axialLabel_Series_Number->setText(seriesNumber_ret);
+
+    // =================== sagital ===================
+    this->ui->sagittalLabel_Modality->setText(modality);
+    /*
+     *  sagittal 슬라이더 위치 값은 vtkcommand에서 슬라이드 따라 변경해줌
+     */
+    this->ui->sagittalLabel_Series_Number->setText(seriesNumber_ret);
+    // =================== sagital ===================
+
+    // =================== coronal ===================
+    this->ui->coronalLabel_Modality->setText(modality);
+    /*
+     *  coronal 슬라이더 위치 값은 vtkcommand에서 슬라이드 따라 변경해줌
+     */
+    this->ui->coronalLabel_Series_Number->setText(seriesNumber_ret);
+    // =================== coronal ===================
+
     // ===================== 왼쪽 아래 =====================
     // ===================== 왼쪽 아래 =====================
 
@@ -587,7 +717,7 @@ void View_Dicom::fix_ViewScale_Width(vtkResliceImageViewer *p_Reslice_Viewer,
     // 즉 실제 이미지는 작아보임
     if (type == vtkResliceImageView_Type::AXIAL)
     {
-        scale = (scale * 1.2);
+        scale = (scale * 1.0);
     }
     else if (type == vtkResliceImageView_Type::CORONAL || type == vtkResliceImageView_Type::SAGITTAL)
     {
@@ -623,7 +753,7 @@ void View_Dicom::slot_MainWindow_Resize()
 {
     //===================== 버튼 위젯 배치 =====================
     //===================== 버튼 위젯 배치 =====================
-    int margin_Widget = 1;
+    int margin_Widget = 0;
     int x_axialBtn_Widget = this->ui->QVTK_axialWidget->width() - this->ui->axialBtn_Widget->width()
                             - margin_Widget;
     int y_axialBtn_Widget = margin_Widget;
@@ -651,15 +781,66 @@ void View_Dicom::slot_MainWindow_Resize()
     this->ui->axial_XY_Label->move(x_axial_XY_Label, y_axial_XY_Label);
 
     int x_sagittal_XY_Label = this->ui->QVTK_sagittalWidget->width() - 230;
-    int y_sagittal_XY_Label = this->ui->QVTK_sagittalWidget->height() - 50;
+    int y_sagittal_XY_Label = this->ui->QVTK_sagittalWidget->height() - 40;
     this->ui->sagittal_XY_Label->move(x_sagittal_XY_Label, y_sagittal_XY_Label);
 
     int x_coronal_XY_Label = this->ui->QVTK_coronalWidget->width() - 230;
-    int y_coronal_XY_Label = this->ui->QVTK_coronalWidget->height() - 50;
+    int y_coronal_XY_Label = this->ui->QVTK_coronalWidget->height() - 40;
     this->ui->coronal_XY_Label->move(x_coronal_XY_Label, y_coronal_XY_Label);
     //===================== XY 라벨 배치 =====================
     //===================== XY 라벨 배치 =====================
 
+    //=================== axial MetaData Label 배치 ===================
+    //=================== axial MetaData Label 배치 ===================
+    int x_axial_MetaData_1 = 0;
+    int y_axial_MetaData_1 = 0;
+    this->ui->axial_MetaData_Label_Widget_1->move(x_axial_MetaData_1, y_axial_MetaData_1);
+
+    this->ui->axial_MetaData_Label_Widget_2->setGeometry(0,
+                                                         55,
+                                                         this->ui->QVTK_axialWidget->width(),
+                                                         70);
+
+    int x_axial_MetaData_2 = 0;
+    int y_axial_MetaData_2 = this->ui->QVTK_axialWidget->height() - 135;
+    this->ui->axial_MetaData_Label_Widget_3->move(x_axial_MetaData_2, y_axial_MetaData_2);
+    //=================== axial MetaData Label 배치 ===================
+    //=================== axial MetaData Label 배치 ===================
+
+    //=================== sagittal MetaData Label 배치 ===================
+    //=================== sagittal MetaData Label 배치 ===================
+    int x_sagittal_MetaData_1 = 0;
+    int y_sagittal_MetaData_1 = 0;
+    this->ui->sagittal_MetaData_Label_Widget_1->move(x_sagittal_MetaData_1, y_sagittal_MetaData_1);
+
+    this->ui->sagittal_MetaData_Label_Widget_2->setGeometry(0,
+                                                            55,
+                                                            this->ui->QVTK_sagittalWidget->width(),
+                                                            70);
+
+    int x_sagittal_MetaData_2 = 0;
+    int y_sagittal_MetaData_2 = this->ui->QVTK_sagittalWidget->height() - 80;
+    this->ui->sagittal_MetaData_Label_Widget_3->move(x_sagittal_MetaData_2, y_sagittal_MetaData_2);
+    //=================== sagittal MetaData Label 배치 ===================
+    //=================== sagittal MetaData Label 배치 ===================
+
+    //=================== coronal MetaData Label 배치 ===================
+    //=================== coronal MetaData Label 배치 ===================
+    int x_coronal_MetaData_1 = 0;
+    int y_coronal_MetaData_1 = 0;
+    this->ui->coronal_MetaData_Label_Widget_1->move(x_coronal_MetaData_1, y_coronal_MetaData_1);
+
+    this->ui->coronal_MetaData_Label_Widget_2->setGeometry(0,
+                                                           55,
+                                                           this->ui->QVTK_coronalWidget->width(),
+                                                           70);
+
+    int x_coronal_MetaData_2 = 0;
+    int y_coronal_MetaData_2 = this->ui->QVTK_coronalWidget->height() - 80;
+    this->ui->coronal_MetaData_Label_Widget_3->move(x_coronal_MetaData_2, y_coronal_MetaData_2);
+
+    //=================== coronal MetaData Label 배치 ===================
+    //=================== coronal MetaData Label 배치 ===================
     return;
 }
 
@@ -677,17 +858,27 @@ int View_Dicom::cnv_Row_To_Slice(int row)
 
 void View_Dicom::init_UI_First()
 {
+    // ==================== layout 배치 ====================
+    // ==================== layout 배치 ====================
     this->ui->horizontalLayout_5->setStretch(0, 2);
     this->ui->horizontalLayout_5->setStretch(1, 6);
     this->ui->horizontalLayout_5->setStretch(2, 6);
     this->ui->horizontalLayout_5->setStretch(3, 3);
+    // ==================== layout 배치 ====================
+    // ==================== layout 배치 ====================
 
     this->ui->axialBtn_Widget->raise();
 
+    // ==================== 슬라이더 방향 설정 ====================
+    // ==================== 슬라이더 방향 설정 ====================
     this->ui->verticalSlider->setEnabled(false);
     this->ui->verticalSlider_2->setEnabled(false);
     this->ui->verticalSlider_3->setEnabled(false);
+    // ==================== 슬라이더 방향 설정 ====================
+    // ==================== 슬라이더 방향 설정 ====================
 
+    // ==================== TableWidget ====================
+    // ==================== TableWidget ====================
     this->ui->tableWidget->verticalHeader()->hide();
     this->ui->tableWidget->setHorizontalHeaderLabels({"Tag Description", "Value"});
     QFont headerFont;
@@ -722,16 +913,123 @@ void View_Dicom::init_UI_First()
     ui->verticalSlider->setInvertedAppearance(true);
     ui->verticalSlider_2->setInvertedAppearance(false);
     ui->verticalSlider_3->setInvertedAppearance(false);
+    // ==================== TableWidget ====================
+    // ==================== TableWidget ====================
 
-    // ui->verticalSlider->setInvertedControls(false);
-    // ui->verticalSlider_2->setInvertedControls(false);
-    // ui->verticalSlider_3->setInvertedControls(false);
+    this->setting_MetaDataLabelSize_IN_init_UI_First();
+
+    this->setting_Action_SetShortcuts();
     return;
 }
-/*
-(0008,0005)
 
- */
+void View_Dicom::setting_Action_SetShortcuts()
+{
+    // ====================== File ======================
+    // ====================== File ======================
+    QKeySequence dirKey("Alt + F");
+    this->ui->actionOpen_Directory->setShortcut(dirKey);
+
+    QKeySequence fileKey("Alt + O");
+    this->ui->actionOpen_File->setShortcut(fileKey);
+    // ====================== File ======================
+    // ====================== File ======================
+
+    // ====================== Adjustments ======================
+    // ====================== Adjustments ======================
+    QKeySequence winKey("Alt + 1");
+    this->ui->actionWindow_Setting->setShortcut(winKey);
+
+    QKeySequence defaultKey("Ctrl + 1");
+    this->ui->actionDefault->setShortcut(defaultKey);
+
+    QKeySequence dyKey("Ctrl + 2");
+    this->ui->actionFull_Dynamic->setShortcut(dyKey);
+
+    QKeySequence abdomenKey("Ctrl + 3");
+    this->ui->actionAbdomen->setShortcut(abdomenKey);
+
+    QKeySequence boneKey("Ctrl + 4");
+    this->ui->actionBone->setShortcut(boneKey);
+
+    QKeySequence lungKey("Ctrl + 5");
+    this->ui->actionLung->setShortcut(lungKey);
+    // ====================== Adjustments ======================
+    // ====================== Adjustments ======================
+    return;
+}
+
+void View_Dicom::setting_MetaDataLabelSize_IN_init_UI_First()
+{
+    // ======================= axial =======================
+    // ======================= axial =======================
+    auto ls_Axial_MetaData_Label_1 = this->ui->axial_MetaData_Label_Widget_1
+                                         ->findChildren<QLabel *>();
+
+    for (QLabel *&label : ls_Axial_MetaData_Label_1)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+        // label->
+    }
+
+    auto ls_Axial_MetaData_Label_2 = this->ui->axial_MetaData_Label_Widget_2
+                                         ->findChildren<QLabel *>();
+
+    for (QLabel *&label : ls_Axial_MetaData_Label_2)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+        // label->
+    }
+
+    auto ls_Axial_MetaData_Label_3 = this->ui->axial_MetaData_Label_Widget_3
+                                         ->findChildren<QLabel *>();
+
+    for (QLabel *&label : ls_Axial_MetaData_Label_3)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+        // label->
+    }
+    // ======================= axial =======================
+    // ======================= axial =======================
+
+    // ======================= sagittal =======================
+    // ======================= sagittal =======================
+    auto ls_sagittal_1 = this->ui->sagittal_MetaData_Label_Widget_1->findChildren<QLabel *>();
+
+    for (auto &label : ls_sagittal_1)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+    }
+
+    auto ls_sagittal_2 = this->ui->sagittal_MetaData_Label_Widget_2->findChildren<QLabel *>();
+
+    for (auto &label : ls_sagittal_2)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+    }
+
+    auto ls_sagittal_3 = this->ui->sagittal_MetaData_Label_Widget_3->findChildren<QLabel *>();
+
+    for (auto &label : ls_sagittal_3)
+    {
+        QFontMetrics fm(label->font());
+        label->setMinimumHeight(fm.height());
+    }
+    // ======================= sagittal =======================
+    // ======================= sagittal =======================
+
+    // ======================= coronal =======================
+    // ======================= coronal =======================
+
+    // ======================= coronal =======================
+    // ======================= coronal =======================
+
+    return;
+}
 
 QTreeWidgetItem *View_Dicom::find_TopLevleItem(const QString uid)
 {
@@ -960,6 +1258,32 @@ void View_Dicom::init_connection()
             &View_Dicom::slot_Sagittal_FlipBtn_Vertical_Clicked);
     //===================== FlipBtn =====================
     //===================== FlipBtn =====================
+
+    //===================== Dialog =====================
+    //===================== Dialog =====================
+    connect(this->ui->actionWindow_Setting,
+            &QAction::triggered,
+            this,
+            &View_Dicom::slot_Action_Window_Setting_Clicked);
+    //===================== Dialog =====================
+    //===================== Dialog =====================
+
+    return;
+}
+
+void View_Dicom::slot_Action_Window_Setting_Clicked()
+{
+    this->p_v_Dia_WinLevelSet->open();
+    auto img = this->p_vm_Dicom->get_store_image();
+    double range[2];
+    img->GetScalarRange(range);
+
+    int mmin = static_cast<int>(range[0]);
+    int mmax = static_cast<int>(range[1]);
+    int window = static_cast<int>(this->sp_Axial_Viewer->GetColorWindow());
+    int level = static_cast<int>(this->sp_Axial_Viewer->GetColorLevel());
+    this->p_v_Dia_WinLevelSet->init_First_Value(mmin, mmax, window, level);
+
     return;
 }
 
@@ -1027,8 +1351,6 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
     this->sp_Coronal_Viewer->SetSlice(this->cursorIndex[1]);
     this->sp_Sagittal_Viewer->SetSlice(this->cursorIndex[0]);
 
-    // 밝기 / 대비 설정
-    this->set_Color_Window_Level();
 
     /*
     this->sp_Axial_Viewer->GetRenderer()->ResetCamera();
@@ -1057,6 +1379,11 @@ void View_Dicom::slot_DicomFile_Reload_From_Store()
                               vtkResliceImageView_Type::SAGITTAL);
 
     this->set_UI_slider();
+    this->set_Sagittal_Coronal_ImageChange(vtkResliceImageView_Type::SAGITTAL);
+    this->set_Sagittal_Coronal_ImageChange(vtkResliceImageView_Type::CORONAL);
+
+    // 밝기 / 대비 설정
+    this->set_Color_Window_Level();
 
     this->sp_Axial_Viewer->Render();
     this->sp_Coronal_Viewer->Render();
@@ -1236,8 +1563,20 @@ void View_Dicom::set_Color_Window_Level()
     double mmin = range[0];
     double mmax = range[1];
 
-    double window = mmax - mmin;
-    double level = (mmax + mmin) / 3.0;
+    /*
+    int dims[3];
+    img->GetDimensions(dims);
+
+    qDebug() << "Scalar type:" << img->GetScalarTypeAsString();
+    qDebug() << "Scalar range:" << range[0] << range[1];
+    qDebug() << "Dimensions:" << dims[0] << dims[1] << dims[2];
+    */
+    int range_max = range[1];
+
+    double window = range_max;
+    // double level = 2048;
+    double level = range_max / 4;
+    // auto mpmp_1 = thi
 
     // 대비 / 밝기
     this->sp_Axial_Viewer->SetColorWindow(window);
