@@ -31,6 +31,18 @@ void View_Dia_Win_Level_Set::init_First_Value(int mmin, int mmax, int window, in
     return;
 }
 
+void View_Dia_Win_Level_Set::slot_WindowLineEdit_TextChanged(const QString s)
+{
+    emit this->sig_Change_Window(s.toInt());
+    return;
+}
+
+void View_Dia_Win_Level_Set::slot_LevelLineEdit_TextChanged(const QString s)
+{
+    emit this->sig_Change_Level(s.toInt());
+    return;
+}
+
 void View_Dia_Win_Level_Set::slot_SetLineEdit_Window_sliderMoved(int set)
 {
     QSignalBlocker block_1(this->ui->window_LineEdit);
@@ -67,7 +79,16 @@ void View_Dia_Win_Level_Set::init_Connect()
             this,
             &View_Dia_Win_Level_Set::slot_SetLineEdit_Level_sliderMoved);
 
-    connect(this->ui->window_LineEdit, &QLineEdit::textChanged, ) return;
+    connect(this->ui->window_LineEdit,
+            &QLineEdit::textChanged,
+            this,
+            &View_Dia_Win_Level_Set::slot_WindowLineEdit_TextChanged);
+
+    connect(this->ui->level_LineEdit,
+            &QLineEdit::textChanged,
+            this,
+            &View_Dia_Win_Level_Set::slot_LevelLineEdit_TextChanged);
+    return;
 }
 
 View_Dia_Win_Level_Set::~View_Dia_Win_Level_Set()

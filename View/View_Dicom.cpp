@@ -9,11 +9,11 @@ View_Dicom::View_Dicom(VM_Dicom *vm_Dicom, QWidget *parent)
     this->p_vm_Dicom = vm_Dicom;
 
     this->init_UI_First();
+    this->init_Dialog();
 
     this->init_Render_Windo();
     this->init_connection();
 
-    this->init_Dialog();
 
     QIcon icon(":/image/time.svg");
     this->ui->pushButton_1->setIcon(icon);
@@ -37,6 +37,10 @@ void View_Dicom::slot_Set_Window(int set)
     this->sp_Axial_Viewer->SetColorWindow(window);
     this->sp_Sagittal_Viewer->SetColorWindow(window);
     this->sp_Coronal_Viewer->SetColorWindow(window);
+
+    this->sp_Axial_Viewer->Render();
+    this->sp_Sagittal_Viewer->Render();
+    this->sp_Coronal_Viewer->Render();
     return;
 }
 
@@ -46,6 +50,10 @@ void View_Dicom::slot_Set_Level(int set)
     this->sp_Axial_Viewer->SetColorLevel(level);
     this->sp_Sagittal_Viewer->SetColorLevel(level);
     this->sp_Coronal_Viewer->SetColorLevel(level);
+
+    this->sp_Axial_Viewer->Render();
+    this->sp_Sagittal_Viewer->Render();
+    this->sp_Coronal_Viewer->Render();
     return;
 }
 
@@ -1265,6 +1273,16 @@ void View_Dicom::init_connection()
             &QAction::triggered,
             this,
             &View_Dicom::slot_Action_Window_Setting_Clicked);
+
+    connect(this->p_v_Dia_WinLevelSet,
+            &View_Dia_Win_Level_Set::sig_Change_Window,
+            this,
+            &View_Dicom::slot_Set_Window);
+
+    connect(this->p_v_Dia_WinLevelSet,
+            &View_Dia_Win_Level_Set::sig_Change_Level,
+            this,
+            &View_Dicom::slot_Set_Level);
     //===================== Dialog =====================
     //===================== Dialog =====================
 
